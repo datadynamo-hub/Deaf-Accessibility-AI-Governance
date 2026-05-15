@@ -1,4 +1,4 @@
-Project 1: AI System Inventory
+# Project 1: AI System Inventory
  
 **Organization:** SignalPath Technologies (fictional): one of the world's leading language services and accessibility technology providers, serving Deaf, hard-of-hearing, and diverse language communities. 10,000+ employees worldwide. Operations across the United States, Canada, the United Kingdom, and a global enterprise customer base. Regulated by the FCC under Part 64 (Video Relay Service obligations), GDPR for EU-adjacent operations, ADA Title IV, and CCPA.
 
