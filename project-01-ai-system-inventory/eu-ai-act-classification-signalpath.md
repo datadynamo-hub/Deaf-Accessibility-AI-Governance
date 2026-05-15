@@ -1,10 +1,10 @@
 # EU AI Act Risk Classification — SignalPath Technologies
 
 **Classification Date:** May 2026
-**Prepared by:** AI Governance Programme Office
+**Prepared by:** AI Governance Program Office
 **Review Due:** November 2026
 
----
+\---
 
 ## Classification Framework
 
@@ -14,18 +14,18 @@ SignalPath applies the EU AI Act as its ethical benchmark globally — not only 
 
 ### Risk Tier Overview
 
-| Tier | Regulatory Treatment |
-|------|---------------------|
-| **Unacceptable Risk** | Prohibited. System must not be deployed. |
-| **High Risk** | Strict pre-deployment obligations. Conformity assessment required. Ongoing monitoring, logging, human oversight, and documentation mandated. |
-| **Limited Risk** | Transparency obligations. Users must be informed they are interacting with an AI. |
-| **Minimal Risk** | No specific regulatory obligations under the Act. General sector rules (FCC, GDPR, ADA) still apply. |
+|Tier|Regulatory Treatment|
+|-|-|
+|**Unacceptable Risk**|Prohibited. System must not be deployed.|
+|**High Risk**|Strict pre-deployment obligations. Conformity assessment required. Ongoing monitoring, logging, human oversight, and documentation mandated.|
+|**Limited Risk**|Transparency obligations. Users must be informed they are interacting with an AI.|
+|**Minimal Risk**|No specific regulatory obligations under the Act. General sector rules (FCC, GDPR, ADA) still apply.|
 
----
+\---
 
 ## Classification Decisions
 
----
+\---
 
 ### SP-AI-001 · SignalPath Interpret
 
@@ -41,17 +41,17 @@ This is not a productivity tool. It is the communication channel itself for Deaf
 
 **Obligations triggered:**
 
-- Conformity assessment before production deployment (Article 43)
-- Technical documentation (Article 11 + Annex IV)
-- Logging and traceability — every interpretation session (Article 12)
-- Human oversight — human interpreter on standby for low-confidence outputs (Article 14)
-- Accuracy, robustness, and bias testing across signer variation, regional dialect, and physical limitation (Article 15)
-- Biometric data processing — explicit consent required (GDPR Article 9)
-- Registration in EU database (Article 71)
+* Conformity assessment before production deployment (Article 43)
+* Technical documentation (Article 11 + Annex IV)
+* Logging and traceability — every interpretation session (Article 12)
+* Human oversight — human interpreter on standby for low-confidence outputs (Article 14)
+* Accuracy, robustness, and bias testing across signer variation, regional dialect, and physical limitation (Article 15)
+* Biometric data processing — explicit consent required (GDPR Article 9)
+* Registration in EU database (Article 71)
 
 **Current compliance gap:** System is pre-production. No conformity assessment conducted. No bias audit for signer variation. Facial expression classification accuracy not benchmarked. Human oversight architecture not yet defined. **Priority: Critical — gate condition for production deployment.**
 
----
+\---
 
 ### SP-AI-002 · SignalPath Forum
 
@@ -67,13 +67,13 @@ Voice data processed in real time constitutes biometric data under GDPR. Ephemer
 
 **Obligations triggered:**
 
-- AI disclosure to end users (Article 52(1))
-- GDPR Article 9 — explicit consent for biometric voice data processing
-- No high-risk conformity requirements
+* AI disclosure to end users (Article 52(1))
+* GDPR Article 9 — explicit consent for biometric voice data processing
+* No high-risk conformity requirements
 
 **Current compliance gap:** Disclosure implementation to be verified across all channels. GDPR consent adequacy to be confirmed at next review. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-003 · SignalPath Express Call Routing ML
 
@@ -89,13 +89,13 @@ If the routing model ever incorporates caller behavioral scoring or profiling be
 
 **Obligations triggered:**
 
-- No high-risk EU AI Act obligations
-- FCC emergency call handling standards apply independently
-- Article 52 not triggered — callers are not directly interacting with the AI
+* No high-risk EU AI Act obligations
+* FCC emergency call handling standards apply independently
+* Article 52 not triggered — callers are not directly interacting with the AI
 
-**Current compliance gap:** Routing logic not documented to explainability standard. Emergency call escalation logic to be audited. **Priority: Medium — FCC exposure is the primary risk here.**
+**Current compliance gap:** Routing logic not documented to explain ability standard. Emergency call escalation logic to be audited. **Priority: Medium — FCC exposure is the primary risk here.**
 
----
+\---
 
 ### SP-AI-004 · CaptionCall AI
 
@@ -109,13 +109,13 @@ CaptionCall AI provides home phone captioning for hard-of-hearing users. It does
 
 **Obligations triggered:**
 
-- AI disclosure — users should be informed captions are AI-generated (Article 52(1))
-- FCC accuracy and reliability standards (primary framework)
-- No high-risk conformity requirements
+* AI disclosure — users should be informed captions are AI-generated (Article 52(1))
+* FCC accuracy and reliability standards (primary framework)
+* No high-risk conformity requirements
 
 **Current compliance gap:** Disclosure language to be confirmed. FCC compliance monitoring in place. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-005 · Microsoft Copilot (M365)
 
@@ -129,13 +129,13 @@ Microsoft Copilot is embedded across M365. The EU AI Act tier is Limited. The da
 
 **Obligations triggered:**
 
-- Article 52(1) — employees should understand they are using an AI system
-- Microsoft EU AI Act compliance representations in enterprise agreement to be reviewed
-- GDPR data minimization — Copilot access scope must be defined and restricted
+* Article 52(1) — employees should understand they are using an AI system
+* Microsoft EU AI Act compliance representations in enterprise agreement to be reviewed
+* GDPR data minimization — Copilot access scope must be defined and restricted
 
 **Current compliance gap:** Copilot data access scope not formally defined. Employee awareness of what Copilot can access is low. **Priority: High — data exposure profile exceeds EU AI Act tier.**
 
----
+\---
 
 ### SP-AI-006 · Workday AI
 
@@ -151,15 +151,15 @@ Attrition prediction models carry bias risk — if historical attrition data ref
 
 **Obligations triggered:**
 
-- Conformity assessment (Article 43)
-- Technical documentation (Article 11)
-- Human oversight — AI recommendations reviewed by HR before any employment decision is finalized (Article 14)
-- Bias audit on training data for interpreter workforce demographics (Article 10)
-- Workday vendor contract must include EU AI Act compliance representations (Article 28)
+* Conformity assessment (Article 43)
+* Technical documentation (Article 11)
+* Human oversight — AI recommendations reviewed by HR before any employment decision is finalized (Article 14)
+* Bias audit on training data for interpreter workforce demographics (Article 10)
+* Workday vendor contract must include EU AI Act compliance representations (Article 28)
 
 **Current compliance gap:** No bias audit confirmed. Workday contract AI Act clauses not verified. Attrition model logic not documented. **Priority: High.**
 
----
+\---
 
 ### SP-AI-007 · UKG AI (Workforce Management)
 
@@ -173,13 +173,13 @@ UKG AI recommends shift structures and flags staffing gaps. Final scheduling dec
 
 **Obligations triggered:**
 
-- No high-risk EU AI Act obligations under current architecture
-- FCC minimum staffing compliance: UKG outputs must be validated against FCC requirements before implementation
-- Human review required before any scheduling output that reduces interpreter hours
+* No high-risk EU AI Act obligations under current architecture
+* FCC minimum staffing compliance: UKG outputs must be validated against FCC requirements before implementation
+* Human review required before any scheduling output that reduces interpreter hours
 
 **Current compliance gap:** Human review process not formally documented. FCC staffing compliance validation not confirmed. **Priority: Medium.**
 
----
+\---
 
 ### SP-AI-008 · Zendesk AI
 
@@ -195,13 +195,13 @@ One SignalPath-specific consideration: many Deaf users communicate in written En
 
 **Obligations triggered:**
 
-- Article 52(1) — customers should be informed when interacting with AI support
-- Sentiment model accuracy validation for ASL-first English writing patterns
-- No high-risk conformity requirements
+* Article 52(1) — customers should be informed when interacting with AI support
+* Sentiment model accuracy validation for ASL-first English writing patterns
+* No high-risk conformity requirements
 
 **Current compliance gap:** Sentiment model not validated for Deaf user communication patterns. Disclosure implementation to be confirmed. **Priority: Medium.**
 
----
+\---
 
 ### SP-AI-009 · Autogen AI (RFP Platform)
 
@@ -215,12 +215,12 @@ Autogen AI generates RFP responses reviewed and approved by humans before submis
 
 **Obligations triggered:**
 
-- No EU AI Act obligations
-- Vendor data retention and training policy must be reviewed
+* No EU AI Act obligations
+* Vendor data retention and training policy must be reviewed
 
 **Current compliance gap:** Vendor data handling policy not reviewed. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-010 · ZoomInfo AI
 
@@ -234,13 +234,13 @@ ZoomInfo enriches contact data and surfaces buying intent signals. Human staff r
 
 **Obligations triggered:**
 
-- No EU AI Act obligations
-- GDPR Article 6 legal basis for processing EU contact data must be confirmed
-- ZoomInfo Data Processing Agreement to be reviewed
+* No EU AI Act obligations
+* GDPR Article 6 legal basis for processing EU contact data must be confirmed
+* ZoomInfo Data Processing Agreement to be reviewed
 
 **Current compliance gap:** GDPR legal basis for EU contact processing not confirmed. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-011 · Gong (Revenue Intelligence)
 
@@ -256,13 +256,13 @@ If Gong outputs inform performance reviews or termination decisions for sales st
 
 **Obligations triggered:**
 
-- Article 52(1) — prospects must be informed calls are recorded and AI-analyzed
-- Reclassify as High Risk if Gong is used in employment performance decisions
-- Recording consent procedures to be audited
+* Article 52(1) — prospects must be informed calls are recorded and AI-analyzed
+* Reclassify as High Risk if Gong is used in employment performance decisions
+* Recording consent procedures to be audited
 
 **Current compliance gap:** Consent disclosure consistency not confirmed. Gong's role in performance management to be clarified before final classification is confirmed. **Priority: Medium.**
 
----
+\---
 
 ### SP-AI-012 · GitHub Copilot (Engineering)
 
@@ -276,13 +276,13 @@ GitHub Copilot assists engineers with code generation. EU AI Act risk tier is mi
 
 **Obligations triggered:**
 
-- No EU AI Act obligations
-- Policy required: what code and data may be submitted to Copilot
-- Enterprise license data handling terms to be reviewed
+* No EU AI Act obligations
+* Policy required: what code and data may be submitted to Copilot
+* Enterprise license data handling terms to be reviewed
 
 **Current compliance gap:** No formal policy on Copilot prompt content. Personal account shadow use unquantified. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-013 · Outside Counsel AI (Harvey AI)
 
@@ -292,20 +292,20 @@ GitHub Copilot assists engineers with code generation. EU AI Act risk tier is mi
 
 **Rationale:**
 
-This is the governance gap most organisations have not addressed. When SignalPath sends contracts, FCC regulatory filings, and RFP documents to outside counsel, that data leaves SignalPath's control. If the law firm uses Harvey AI to analyse those documents — standard practice at major firms in 2026 — SignalPath has an AI system processing its most sensitive data that it did not procure, did not risk-assess, and has zero direct visibility into.
+This is the governance gap most organizations have not addressed. When SignalPath sends contracts, FCC regulatory filings, and RFP documents to outside counsel, that data leaves SignalPath's control. If the law firm uses Harvey AI to analyze those documents — standard practice at major firms in 2026 — SignalPath has an AI system processing its most sensitive data that it did not procure, did not risk-assess, and has zero direct visibility into.
 
 Documents processed include privileged legal communications, FCC compliance strategies, interpreter contract terms, and confidential capability data.
 
 **Obligations triggered:**
 
-- Article 28 — data processing agreement must explicitly address outside counsel's AI tool use
-- GDPR — Harvey AI must be identified as a sub-processor in the DPA
-- Outside counsel engagement agreement must require AI tool disclosure and prior approval
-- SignalPath retains audit rights over AI-processed outputs
+* Article 28 — data processing agreement must explicitly address outside counsel's AI tool use
+* GDPR — Harvey AI must be identified as a sub-processor in the DPA
+* Outside counsel engagement agreement must require AI tool disclosure and prior approval
+* SignalPath retains audit rights over AI-processed outputs
 
-**Current compliance gap:** Outside counsel engagement agreement almost certainly does not contain AI tool clauses. This gap is industry-wide — most organisations have not addressed it. **Priority: Critical.**
+**Current compliance gap:** Outside counsel engagement agreement almost certainly does not contain AI tool clauses. This gap is industry-wide — most organizations have not addressed it. **Priority: Critical.**
 
----
+\---
 
 ### SP-AI-014 · FCC Regulatory Monitoring Tool
 
@@ -319,13 +319,13 @@ The FCC monitoring tool surfaces relevant regulatory changes to the compliance t
 
 **Obligations triggered:**
 
-- No EU AI Act obligations
-- Vendor to be confirmed — discovery item
-- Output validation process to be documented
+* No EU AI Act obligations
+* Vendor to be confirmed — discovery item
+* Output validation process to be documented
 
 **Current compliance gap:** Vendor not yet confirmed. Validation process not documented. **Priority: Low.**
 
----
+\---
 
 ### SP-AI-015 · Microsoft Sentinel / Defender AI
 
@@ -339,13 +339,13 @@ Sentinel monitors the M365 environment for security threats. AI-automated respon
 
 **Obligations triggered:**
 
-- No high-risk EU AI Act obligations
-- Human review policy required before automated actions affecting interpreter accounts during active shifts
-- Logging of all automated responses for audit
+* No high-risk EU AI Act obligations
+* Human review policy required before automated actions affecting interpreter accounts during active shifts
+* Logging of all automated responses for audit
 
 **Current compliance gap:** Automated response rules not reviewed for VRS service delivery impact. **Priority: Medium.**
 
----
+\---
 
 ### SP-AI-016 · Shadow AI — Unmanaged Employee AI Use
 
@@ -355,45 +355,46 @@ Sentinel monitors the M365 environment for security threats. AI-automated respon
 
 **Rationale:**
 
-Shadow AI is not a single system — it is a risk class representing all AI tools currently in use by SignalPath employees without IT approval, security review, or data processing agreements. Industry benchmarks confirm shadow AI adoption is active and significant at organisations of this size and sector.
+Shadow AI is not a single system — it is a risk class representing all AI tools currently in use by SignalPath employees without IT approval, security review, or data processing agreements. Industry benchmarks confirm shadow AI adoption is active and significant at organizations of this size and sector.
 
-The VRS context elevates this from a data governance gap to a potential regulatory event. FCC rules protect relay call content as legally privileged communication. An interpreter coordinator summarising call logs in ChatGPT, a legal staff member uploading a contract to Claude, an engineer pasting an internal API schema into Gemini — each instance is a potential FCC compliance violation with no audit trail and no remediation path.
+The VRS context elevates this from a data governance gap to a potential regulatory event. FCC rules protect relay call content as legally privileged communication. An interpreter coordinator summarizing call logs in ChatGPT, a legal staff member uploading a contract to Claude, an engineer pasting an internal API schema into Gemini — each instance is a potential FCC compliance violation with no audit trail and no remediation path.
 
 Known shadow AI categories in this environment: consumer LLMs (ChatGPT, Claude, Gemini) used on work data; meeting recorders (Otter.ai, Fireflies, Fathom) uploading transcripts to third-party servers; browser extensions (Grammarly) processing email and document content; voice tools (ElevenLabs) used by training or marketing teams; translation tools (DeepL free tier) processing internal documents; document AI (ChatPDF, Adobe Acrobat AI) processing internal PDFs; personal coding AI accounts used by engineers outside enterprise license.
 
 **Obligations triggered:**
 
-- Immediate discovery: CASB or firewall log audit, browser extension scan via endpoint management, expense report review for micro-transactions to AI vendors
-- GDPR — data processing agreements required for any tool touching personal data
-- FCC — relay call content must not be processed by any system outside SignalPath's control without explicit policy and legal review
-- Employee AI acceptable use policy required before this inventory is presented to the board
-- Approved tool list to be published and communicated to all staff
+* Immediate discovery: CASB or firewall log audit, browser extension scan via endpoint management, expense report review for micro-transactions to AI vendors
+* GDPR — data processing agreements required for any tool touching personal data
+* FCC — relay call content must not be processed by any system outside SignalPath's control without explicit policy and legal review
+* Employee AI acceptable use policy required before this inventory is presented to the board
+* Approved tool list to be published and communicated to all staff
 
 **Current compliance gap:** No discovery conducted. No acceptable use policy exists. No approved tool list published. This is the highest-urgency governance gap in the inventory — not because the EU AI Act tier is highest, but because it is the gap most likely to have already produced a compliance event that SignalPath does not yet know about. **Priority: Critical — begin discovery immediately.**
 
----
+\---
 
 ## Classification Summary
 
-| System | Classification | Compliance Status | Priority |
-|--------|---------------|-------------------|---------|
-| SP-AI-001 SignalPath Interpret | High Risk | Pre-production — conformity assessment required before deployment | Critical |
-| SP-AI-002 SignalPath Forum | Limited Risk | Partial — disclosure verification required | Low |
-| SP-AI-003 Express Call Routing ML | Limited Risk | Partial — routing logic documentation required | Medium |
-| SP-AI-004 CaptionCall AI | Limited Risk | Adequate — disclosure language to confirm | Low |
-| SP-AI-005 Microsoft Copilot | Limited Risk | Gap — data access scope undefined | High |
-| SP-AI-006 Workday AI | High Risk | Gap — no bias audit, no contract AI clauses | High |
-| SP-AI-007 UKG AI | Limited Risk | Partial — human review process not documented | Medium |
-| SP-AI-008 Zendesk AI | Limited Risk | Gap — sentiment model not validated for Deaf users | Medium |
-| SP-AI-009 Autogen AI | Minimal Risk | Gap — vendor data retention policy not reviewed | Low |
-| SP-AI-010 ZoomInfo AI | Minimal Risk | Gap — GDPR legal basis for EU contacts unconfirmed | Low |
-| SP-AI-011 Gong | Limited Risk | Gap — consent consistency and performance review role unclear | Medium |
-| SP-AI-012 GitHub Copilot | Minimal Risk | Gap — no prompt content policy | Low |
-| SP-AI-013 Outside Counsel Harvey AI | High Risk (Third-Party) | Critical gap — no AI clause in engagement agreement | Critical |
-| SP-AI-014 FCC Monitoring Tool | Minimal Risk | Gap — vendor unconfirmed | Low |
-| SP-AI-015 Microsoft Sentinel | Limited Risk | Gap — automated response rules not reviewed for VRS impact | Medium |
-| SP-AI-016 Shadow AI | Unclassifiable — High Risk pending discovery | Critical gap — no discovery conducted, no policy exists | Critical |
+|System|Classification|Compliance Status|Priority|
+|-|-|-|-|
+|SP-AI-001 SignalPath Interpret|High Risk|Pre-production — conformity assessment required before deployment|Critical|
+|SP-AI-002 SignalPath Forum|Limited Risk|Partial — disclosure verification required|Low|
+|SP-AI-003 Express Call Routing ML|Limited Risk|Partial — routing logic documentation required|Medium|
+|SP-AI-004 CaptionCall AI|Limited Risk|Adequate — disclosure language to confirm|Low|
+|SP-AI-005 Microsoft Copilot|Limited Risk|Gap — data access scope undefined|High|
+|SP-AI-006 Workday AI|High Risk|Gap — no bias audit, no contract AI clauses|High|
+|SP-AI-007 UKG AI|Limited Risk|Partial — human review process not documented|Medium|
+|SP-AI-008 Zendesk AI|Limited Risk|Gap — sentiment model not validated for Deaf users|Medium|
+|SP-AI-009 Autogen AI|Minimal Risk|Gap — vendor data retention policy not reviewed|Low|
+|SP-AI-010 ZoomInfo AI|Minimal Risk|Gap — GDPR legal basis for EU contacts unconfirmed|Low|
+|SP-AI-011 Gong|Limited Risk|Gap — consent consistency and performance review role unclear|Medium|
+|SP-AI-012 GitHub Copilot|Minimal Risk|Gap — no prompt content policy|Low|
+|SP-AI-013 Outside Counsel Harvey AI|High Risk (Third-Party)|Critical gap — no AI clause in engagement agreement|Critical|
+|SP-AI-014 FCC Monitoring Tool|Minimal Risk|Gap — vendor unconfirmed|Low|
+|SP-AI-015 Microsoft Sentinel|Limited Risk|Gap — automated response rules not reviewed for VRS impact|Medium|
+|SP-AI-016 Shadow AI|Unclassifiable — High Risk pending discovery|Critical gap — no discovery conducted, no policy exists|Critical|
 
----
+\---
 
 *Classification decisions are not static. Review required annually or upon material change to any system's design, purpose, deployment context, or applicable regulatory framework. Three systems carry Critical priority and require immediate action before this inventory is presented to the board.*
+
