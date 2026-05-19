@@ -12,6 +12,12 @@ Full credit to Taimur Ijlal ([taimurijlal/AIGovernance](https://github.com/taimu
 
 Built publicly. Feedback welcome. Fork it and map it to your industry or build with me.
 
+### 📺 Watch the Project Introduction (8 mins)
+[![Project Intro Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://YOUR_VIDEO_URL)
+*This high-level overview introduces the project's goals and walks through how Taimur Ijlal's original AI governance scaffolding was remapped for Deaf accessibility.*
+
+<img width="616" height="341" alt="Screenshot 2026-05-18 230148" src="https://github.com/user-attachments/assets/d5cbb04b-4a8d-44f9-b91d-e076ea827bd4" />
+
 \---
 
 ## The Scenario
