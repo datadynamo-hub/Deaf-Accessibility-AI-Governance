@@ -36,7 +36,7 @@ with col1:
 with col2:
     st.subheader("NIST RMF Mapping")
     if os.path.exists(nist_file):
-        with open(nist_file, "r", encoding="utf-8") as f:
-            with open(nist_file, "r", encoding="utf-8", errors="ignore") as f:
+        with open(nist_file, "r", encoding="utf-8", errors="ignore") as f:
+            st.markdown(f.read())
     else:
         st.warning(f"Could not find: {nist_file}")
