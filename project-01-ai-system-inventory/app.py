@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # ==========================================
-# 1. PAGE INITIALIZATION & MODERN STYLING
+# 1. PAGE INITIALIZATION & MODERN SAAS STYLING
 # ==========================================
 st.set_page_config(
     page_title="SignalPath AI Operational Governance Center",
@@ -11,33 +11,129 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom minimal CSS injection to clean up the 1990s look
+# Inter / Geist inspired typography and subtle Stripe/Vanta container geometry
 st.markdown("""
     <style>
-    /* Modern Light/Neutral Metric Cards */
-    [data-testid="stMetric"] {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    /* Global Canvas & Typography Reset (Resend/Stripe Style) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    html, body, [data-testid="stAppViewContainer"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        background-color: #f8fafc !important; /* Soft Slate Tailwind Background */
     }
-    /* Clean Container Borders */
-    [data-testid="stContainer"] {
-        border-radius: 12px;
-        padding: 25px;
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
+    
+    h1 {
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        letter-spacing: -0.02em !important;
+        font-size: 32px !important;
     }
-    /* Tab Styling Overrides */
+    
+    h3 {
+        font-weight: 600 !important;
+        color: #1e293b !important;
+        letter-spacing: -0.01em !important;
+    }
+    
+    /* Document/Tab Navigation Bar Styling (Stripe UI) */
+    div[data-testid="stTabBar"] {
+        background-color: transparent !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        margin-bottom: 20px !important;
+    }
     button[data-baseweb="tab"] {
-        font-size: 16px;
-        font-weight: 600;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: #64748b !important;
+        border-bottom-width: 2px !important;
+        transition: all 0.2s ease !important;
+    }
+    button[aria-selected="true"] {
+        color: #2563eb !important; /* Premium Royal Blue Accent */
+        border-bottom-color: #2563eb !important;
+    }
+
+    /* Floating Metric Cards (Vanta/Stripe Minimalist Light Style) */
+    [data-testid="stMetric"] {
+        background-color: #ffffff !important;
+        padding: 20px 24px !important;
+        border-radius: 12px !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03) !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-weight: 600 !important;
+        color: #64748b !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        font-size: 11px !important;
+    }
+    [data-testid="stMetricValue"] {
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        font-size: 26px !important;
+    }
+
+    /* Structural Grid Boundaries (AWS Console Robust Isolation) */
+    div[data-testid="stContainer"] {
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        padding: 24px !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02) !important;
+    }
+
+    /* Modern Desaturated Alert Elements (No 1990s raw primaries) */
+    div[data-testid="stAlert"] {
+        border-radius: 8px !important;
+        border: 1px solid transparent !important;
+        box-shadow: none !important;
+        padding: 16px !important;
+    }
+    /* Info/Quickstart Card */
+    div[data-testid="stAlert"]:has(div:contains("👉")) {
+        background-color: #f0f6ff !important;
+        border-color: #dbeafe !important;
+        color: #1e40af !important;
+    }
+    /* MLOps Core Failure Incident Alert */
+    div[data-testid="stAlert"]:has(div:contains("❌")) {
+        background-color: #fef2f2 !important;
+        border-color: #fee2e2 !important;
+        color: #991b1b !important;
+    }
+    /* Automated Action Escalation Sub-logs */
+    div[data-testid="stAlert"]:has(div:contains("Incident Automation")) {
+        background-color: #fffbeb !important;
+        border-color: #fef3c7 !important;
+        color: #92400e !important;
+    }
+    /* Control Loop Passing State */
+    div[data-testid="stAlert"]:has(div:contains("✅")) {
+        background-color: #f0fdf4 !important;
+        border-color: #dcfce7 !important;
+        color: #166534 !important;
+    }
+
+    /* Custom Minimalist Resend-Style Expander Toggle */
+    .stHeader {
+        background-color: transparent !important;
+    }
+    div[data-testid="stExpander"] {
+        background-color: #ffffff !important;
+        border-radius: 8px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Slider UI Parameter Control Restyling */
+    div[data-baseweb="slider"] {
+        padding-top: 10px !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Minimal Top Branding Header
+# Top Brand Architecture Header
 st.markdown("# 🛡️ SignalPath AI Governance Center")
 st.caption("Continuous Control Telemetry • System Inventory Registry • Regulatory Alignment Mapping")
 
@@ -60,7 +156,7 @@ except Exception as e:
     st.stop()
 
 # ==========================================
-# 3. GLOBAL SIDEBAR FILTERS (Context Aware)
+# 3. GLOBAL SIDEBAR CONTROL TOWER (AWS Style)
 # ==========================================
 st.sidebar.markdown("## ⚙️ Registry Filters")
 
@@ -88,7 +184,7 @@ df_filtered = df_raw[mask].copy()
 is_empty = df_filtered.empty
 
 # ==========================================
-# 4. MASTER NAVIGATION TABS (The "Google" Separation)
+# 4. MASTER NAVIGATION SPLIT (The Google Decoupling)
 # ==========================================
 tab_command, tab_registry, tab_docs = st.tabs([
     "🕹️ Operational Command Center", 
@@ -101,17 +197,15 @@ tab_command, tab_registry, tab_docs = st.tabs([
 # ==========================================
 with tab_command:
     
-    # Clean Onboarding Element
     st.info(
         "👉 **Quickstart Guide:** This command center runs active, simulated continuous controls over production assets. "
         "Use the telemetry slider below to simulate real-time model degradation and witness the automated failover guardrails."
     )
     
-    # Clean Video Link Integration
+    # Modernized minimal expander video link
     with st.expander("🎥 Click here for a video walkthrough of this project architecture"):
-        st.write("*(Loom Video Embed Placeholder - Will sit here neatly without cluttering the main screen)*")
+        st.write("*(Loom Video Embed Placeholder)*")
     
-    # Pillar 3: Dynamic KPI Metrics Blocks
     st.write("##")
     total_systems = len(df_filtered)
     high_critical_count = 0
@@ -125,6 +219,7 @@ with tab_command:
             if not valid_maturity.empty:
                 avg_maturity = f"{valid_maturity.mean():.1f} / 5.0"
 
+    # Stripe/Vanta style executive indicators
     metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
     with metric_col1:
         st.metric(label="Centralized Oversight", value=f"{total_systems} AI Systems" if not is_empty else "0 Systems", delta=f"{len(df_raw)} Total Tracked")
@@ -135,7 +230,6 @@ with tab_command:
     with metric_col4:
         st.metric(label="Avg NIST Maturity Level", value=avg_maturity, delta="Continuous Improvement Target")
 
-    # Pillar 2: Live Automated Control Monitor
     st.write("##")
     with st.container():
         st.markdown("### 🚨 Live Control Monitor: SignalPath Interpret (`SP-AI-001`)")
@@ -177,7 +271,7 @@ with tab_command:
                 )
 
 # ==========================================
-# TAB 2: ACTIVE REGISTRY INVENTORY
+# TAB 2: ACTIVE REGISTRY INVENTORY (Data View)
 # ==========================================
 with tab_registry:
     st.markdown("### 📋 Active Systems Risk Register")
@@ -210,7 +304,6 @@ with tab_registry:
             hide_index=True
         )
 
-        # Detailed Asset Deep Dive Panel
         st.write("##")
         if "system_name" in df_filtered.columns:
             selected_system = st.selectbox("Select an inventory asset to review its full enterprise profile:", options=df_filtered["system_name"].tolist())
