@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # ==========================================
-# 1. PAGE INITIALIZATION & CONFIGURATION
+# 1. PAGE INITIALIZATION
 # ==========================================
 st.set_page_config(
     page_title="SignalPath AI Operational Governance Center",
@@ -11,9 +11,17 @@ st.set_page_config(
     layout="wide"
 )
 
-# Top Brand Architecture Header
-st.markdown("# 🛡️ SignalPath AI Governance Center")
-st.caption("Continuous Control Telemetry • System Inventory Registry • Regulatory Alignment Mapping")
+# Custom premium title layout block
+st.markdown("### 🛡️ SignalPath AI Governance Control Center")
+
+col_header_1, col_header_2, col_header_3 = st.columns(3)
+with col_header_1:
+    st.button("⚡ Continuous Control Telemetry", use_container_width=True)
+with col_header_2:
+    st.button("📋 System Inventory Registry", use_container_width=True)
+with col_header_3:
+    st.button("📚 Regulatory Alignment Mapping", use_container_width=True)
+
 st.markdown("---")
 
 BASE_PATH = "project-01-ai-system-inventory"
@@ -37,7 +45,8 @@ except Exception as e:
 # ==========================================
 # 3. GLOBAL SIDEBAR CONTROL TOWER
 # ==========================================
-st.sidebar.markdown("## ⚙️ Registry Filters")
+st.sidebar.markdown("### ⚙️ Registry Filters")
+st.sidebar.markdown("---")
 
 has_bu = "business_unit" in df_raw.columns
 has_tier = "eu_ai_act_risk_tier" in df_raw.columns
@@ -47,9 +56,18 @@ all_bus = sorted(df_raw["business_unit"].dropna().unique()) if has_bu else []
 all_tiers = sorted(df_raw["eu_ai_act_risk_tier"].dropna().unique()) if has_tier else []
 all_statuses = sorted(df_raw["deployment_status"].dropna().unique()) if has_status else []
 
-selected_bu = st.sidebar.multiselect("Business Unit", options=all_bus, default=all_bus)
-selected_tier = st.sidebar.multiselect("Regulatory Tier", options=all_tiers, default=all_tiers)
-selected_status = st.sidebar.multiselect("Deployment Status", options=all_statuses, default=all_statuses)
+# Cleaned checkbox format to prevent massive multi-select text cutoffs
+select_all_bu = st.sidebar.checkbox("All Business Units Active", value=True)
+if select_all_bu:
+    selected_bu = all_bus
+else:
+    selected_bu = st.sidebar.multiselect("Select Specific Units", options=all_bus)
+
+st.sidebar.markdown("##")
+selected_tier = st.sidebar.multiselect("Regulatory Tiers", options=all_tiers, default=all_tiers)
+
+st.sidebar.markdown("##")
+selected_status = st.sidebar.multiselect("Deployment Pipelines", options=all_statuses, default=all_statuses)
 
 mask = pd.Series(True, index=df_raw.index)
 if has_bu and selected_bu:
@@ -81,9 +99,8 @@ with tab_command:
         "Use the telemetry slider below to simulate real-time model degradation and witness the automated failover guardrails."
     )
     
-    # Native clean expander
     with st.expander("🎥 Click here for a video walkthrough of this project architecture"):
-        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # Replace with your actual Loom or video link asset
+        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     
     st.write("##")
     total_systems = len(df_filtered)
@@ -98,7 +115,7 @@ with tab_command:
             if not valid_maturity.empty:
                 avg_maturity = f"{valid_maturity.mean():.1f} / 5.0"
 
-    # Stripe/Vanta Style Metrics Layout using explicit containers with borders
+    # Crisp card structures using pure container properties
     metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
     with metric_col1:
         with st.container(border=True):
@@ -115,7 +132,6 @@ with tab_command:
 
     st.write("##")
     
-    # Live Control Monitor Container Block
     with st.container(border=True):
         st.markdown("### 🚨 Live Control Monitor: SignalPath Interpret (`SP-AI-001`)")
         st.markdown(
