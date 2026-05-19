@@ -5,7 +5,7 @@ import os
 st.set_page_config(layout="wide")
 
 st.title("Deaf Accessibility AI Governance Project")
-st.header("AI System Inventory")
+st.header("AI System Inventory Dashboard")
 
 # Base paths for project files
 folder_prefix = "project-01-ai-system-inventory"
@@ -36,7 +36,7 @@ with col1:
 with col2:
     st.subheader("NIST RMF Mapping")
     if os.path.exists(nist_file):
-        with open(nist_file, "r", encoding="utf-8", errors="ignore") as f:
-          with open(nist_file, "r", encoding="utf-16", errors="ignore") as f:
+        with open(nist_file, "r", encoding="utf-16", errors="ignore") as f:
+            st.markdown(f.read())
     else:
         st.warning(f"Could not find: {nist_file}")
