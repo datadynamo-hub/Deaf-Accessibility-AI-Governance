@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # ==========================================
-# 1. PAGE INITIALIZATION & MODERN SAAS STYLING
+# 1. PAGE INITIALIZATION & BULLETPROOF STYLING
 # ==========================================
 st.set_page_config(
     page_title="SignalPath AI Operational Governance Center",
@@ -11,124 +11,58 @@ st.set_page_config(
     layout="wide"
 )
 
-# Inter / Geist inspired typography and subtle Stripe/Vanta container geometry
+# Direct element overrides to force a Stripe/Vanta light theme canvas
 st.markdown("""
     <style>
-    /* Global Canvas & Typography Reset (Resend/Stripe Style) */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    html, body, [data-testid="stAppViewContainer"] {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        background-color: #f8fafc !important; /* Soft Slate Tailwind Background */
+    /* Force canvas background swap to soft slate */
+    .stApp, [data-testid="stAppViewContainer"] {
+        background-color: #f8fafc !important;
     }
     
-    h1 {
-        font-weight: 700 !important;
-        color: #0f172a !important;
-        letter-spacing: -0.02em !important;
-        font-size: 32px !important;
-    }
-    
-    h3 {
-        font-weight: 600 !important;
-        color: #1e293b !important;
-        letter-spacing: -0.01em !important;
-    }
-    
-    /* Document/Tab Navigation Bar Styling (Stripe UI) */
-    div[data-testid="stTabBar"] {
-        background-color: transparent !important;
-        border-bottom: 1px solid #e2e8f0 !important;
-        margin-bottom: 20px !important;
-    }
-    button[data-baseweb="tab"] {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 14px !important;
-        font-weight: 500 !important;
-        color: #64748b !important;
-        border-bottom-width: 2px !important;
-        transition: all 0.2s ease !important;
-    }
-    button[aria-selected="true"] {
-        color: #2563eb !important; /* Premium Royal Blue Accent */
-        border-bottom-color: #2563eb !important;
-    }
-
-    /* Floating Metric Cards (Vanta/Stripe Minimalist Light Style) */
+    /* Re-render Metric Cards with clean margins and drop shadows */
     [data-testid="stMetric"] {
         background-color: #ffffff !important;
-        padding: 20px 24px !important;
+        padding: 20px !important;
         border-radius: 12px !important;
         border: 1px solid #e2e8f0 !important;
-        box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03) !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02) !important;
     }
+    
+    /* Understated modern metric typography values */
     [data-testid="stMetricLabel"] {
         font-weight: 600 !important;
         color: #64748b !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.05em !important;
         font-size: 11px !important;
+        letter-spacing: 0.05em !important;
     }
     [data-testid="stMetricValue"] {
         font-weight: 700 !important;
         color: #0f172a !important;
-        font-size: 26px !important;
+        font-size: 24px !important;
     }
 
-    /* Structural Grid Boundaries (AWS Console Robust Isolation) */
+    /* Force operational blocks into clean white container panels */
     div[data-testid="stContainer"] {
         background-color: #ffffff !important;
         border-radius: 12px !important;
         padding: 24px !important;
         border: 1px solid #e2e8f0 !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02) !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+        margin-top: 20px !important;
     }
 
-    /* Modern Desaturated Alert Elements (No 1990s raw primaries) */
+    /* Soften native Streamlit alert blocks globally */
     div[data-testid="stAlert"] {
         border-radius: 8px !important;
-        border: 1px solid transparent !important;
-        box-shadow: none !important;
-        padding: 16px !important;
-    }
-    /* Info/Quickstart Card */
-    div[data-testid="stAlert"]:has(div:contains("👉")) {
-        background-color: #f0f6ff !important;
-        border-color: #dbeafe !important;
-        color: #1e40af !important;
-    }
-    /* MLOps Core Failure Incident Alert */
-    div[data-testid="stAlert"]:has(div:contains("❌")) {
-        background-color: #fef2f2 !important;
-        border-color: #fee2e2 !important;
-        color: #991b1b !important;
-    }
-    /* Automated Action Escalation Sub-logs */
-    div[data-testid="stAlert"]:has(div:contains("Incident Automation")) {
-        background-color: #fffbeb !important;
-        border-color: #fef3c7 !important;
-        color: #92400e !important;
-    }
-    /* Control Loop Passing State */
-    div[data-testid="stAlert"]:has(div:contains("✅")) {
-        background-color: #f0fdf4 !important;
-        border-color: #dcfce7 !important;
-        color: #166534 !important;
-    }
-
-    /* Custom Minimalist Resend-Style Expander Toggle */
-    .stHeader {
-        background-color: transparent !important;
-    }
-    div[data-testid="stExpander"] {
-        background-color: #ffffff !important;
-        border-radius: 8px !important;
         border: 1px solid #e2e8f0 !important;
+        box-shadow: none !important;
     }
-
-    /* Slider UI Parameter Control Restyling */
-    div[data-baseweb="slider"] {
-        padding-top: 10px !important;
+    
+    /* Tab formatting navigation alignment */
+    button[data-baseweb="tab"] {
+        font-weight: 600 !important;
+        font-size: 14px !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -156,7 +90,7 @@ except Exception as e:
     st.stop()
 
 # ==========================================
-# 3. GLOBAL SIDEBAR CONTROL TOWER (AWS Style)
+# 3. GLOBAL SIDEBAR CONTROL TOWER
 # ==========================================
 st.sidebar.markdown("## ⚙️ Registry Filters")
 
@@ -184,7 +118,7 @@ df_filtered = df_raw[mask].copy()
 is_empty = df_filtered.empty
 
 # ==========================================
-# 4. MASTER NAVIGATION SPLIT (The Google Decoupling)
+# 4. MASTER NAVIGATION SPLIT
 # ==========================================
 tab_command, tab_registry, tab_docs = st.tabs([
     "🕹️ Operational Command Center", 
@@ -202,7 +136,6 @@ with tab_command:
         "Use the telemetry slider below to simulate real-time model degradation and witness the automated failover guardrails."
     )
     
-    # Modernized minimal expander video link
     with st.expander("🎥 Click here for a video walkthrough of this project architecture"):
         st.write("*(Loom Video Embed Placeholder)*")
     
@@ -219,7 +152,7 @@ with tab_command:
             if not valid_maturity.empty:
                 avg_maturity = f"{valid_maturity.mean():.1f} / 5.0"
 
-    # Stripe/Vanta style executive indicators
+    # Stripe/Vanta style metrics grid layout
     metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
     with metric_col1:
         st.metric(label="Centralized Oversight", value=f"{total_systems} AI Systems" if not is_empty else "0 Systems", delta=f"{len(df_raw)} Total Tracked")
@@ -271,7 +204,7 @@ with tab_command:
                 )
 
 # ==========================================
-# TAB 2: ACTIVE REGISTRY INVENTORY (Data View)
+# TAB 2: ACTIVE REGISTRY INVENTORY
 # ==========================================
 with tab_registry:
     st.markdown("### 📋 Active Systems Risk Register")
