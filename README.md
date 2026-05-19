@@ -15,8 +15,9 @@ Built publicly. Feedback welcome. Fork it and map it to your industry or build w
 ### 📺 Watch the Project Introduction (8 mins)
 *This high-level overview introduces the project's goals and walks through how Taimur Ijlal's original AI governance scaffolding was remapped for Deaf accessibility.*
 
+<p align="center">
 <img width="616" height="341" alt="Screenshot 2026-05-18 230148" src="https://github.com/user-attachments/assets/d5cbb04b-4a8d-44f9-b91d-e076ea827bd4" />
-
+</p>
 
 ## The Scenario
 
