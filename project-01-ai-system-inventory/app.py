@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # ==========================================
-# 1. PAGE INITIALIZATION & BULLETPROOF STYLING
+# 1. PAGE INITIALIZATION & CONFIGURATION
 # ==========================================
 st.set_page_config(
     page_title="SignalPath AI Operational Governance Center",
@@ -11,65 +11,10 @@ st.set_page_config(
     layout="wide"
 )
 
-# Direct element overrides to force a Stripe/Vanta light theme canvas
-st.markdown("""
-    <style>
-    /* Force canvas background swap to soft slate */
-    .stApp, [data-testid="stAppViewContainer"] {
-        background-color: #f8fafc !important;
-    }
-    
-    /* Re-render Metric Cards with clean margins and drop shadows */
-    [data-testid="stMetric"] {
-        background-color: #ffffff !important;
-        padding: 20px !important;
-        border-radius: 12px !important;
-        border: 1px solid #e2e8f0 !important;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02) !important;
-    }
-    
-    /* Understated modern metric typography values */
-    [data-testid="stMetricLabel"] {
-        font-weight: 600 !important;
-        color: #64748b !important;
-        text-transform: uppercase !important;
-        font-size: 11px !important;
-        letter-spacing: 0.05em !important;
-    }
-    [data-testid="stMetricValue"] {
-        font-weight: 700 !important;
-        color: #0f172a !important;
-        font-size: 24px !important;
-    }
-
-    /* Force operational blocks into clean white container panels */
-    div[data-testid="stContainer"] {
-        background-color: #ffffff !important;
-        border-radius: 12px !important;
-        padding: 24px !important;
-        border: 1px solid #e2e8f0 !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
-        margin-top: 20px !important;
-    }
-
-    /* Soften native Streamlit alert blocks globally */
-    div[data-testid="stAlert"] {
-        border-radius: 8px !important;
-        border: 1px solid #e2e8f0 !important;
-        box-shadow: none !important;
-    }
-    
-    /* Tab formatting navigation alignment */
-    button[data-baseweb="tab"] {
-        font-weight: 600 !important;
-        font-size: 14px !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # Top Brand Architecture Header
 st.markdown("# 🛡️ SignalPath AI Governance Center")
 st.caption("Continuous Control Telemetry • System Inventory Registry • Regulatory Alignment Mapping")
+st.markdown("---")
 
 BASE_PATH = "project-01-ai-system-inventory"
 
@@ -136,8 +81,9 @@ with tab_command:
         "Use the telemetry slider below to simulate real-time model degradation and witness the automated failover guardrails."
     )
     
+    # Native clean expander
     with st.expander("🎥 Click here for a video walkthrough of this project architecture"):
-        st.write("*(Loom Video Embed Placeholder)*")
+        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # Replace with your actual Loom or video link asset
     
     st.write("##")
     total_systems = len(df_filtered)
@@ -152,29 +98,35 @@ with tab_command:
             if not valid_maturity.empty:
                 avg_maturity = f"{valid_maturity.mean():.1f} / 5.0"
 
-    # Stripe/Vanta style metrics grid layout
+    # Stripe/Vanta Style Metrics Layout using explicit containers with borders
     metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
     with metric_col1:
-        st.metric(label="Centralized Oversight", value=f"{total_systems} AI Systems" if not is_empty else "0 Systems", delta=f"{len(df_raw)} Total Tracked")
+        with st.container(border=True):
+            st.metric(label="Centralized Oversight", value=f"{total_systems} AI Systems" if not is_empty else "0 Systems", delta=f"{len(df_raw)} Total Tracked")
     with metric_col2:
-        st.metric(label="Audit Prep Efficiency", value="-88%", delta="From Weeks to Hours")
+        with st.container(border=True):
+            st.metric(label="Audit Prep Efficiency", value="-88%", delta="From Weeks to Hours")
     with metric_col3:
-        st.metric(label="High/Critical Risk Vectors", value=high_critical_count, delta="Prioritized for Mitigation", delta_color="inverse")
+        with st.container(border=True):
+            st.metric(label="High/Critical Risk Vectors", value=high_critical_count, delta="Prioritized for Mitigation", delta_color="inverse")
     with metric_col4:
-        st.metric(label="Avg NIST Maturity Level", value=avg_maturity, delta="Continuous Improvement Target")
+        with st.container(border=True):
+            st.metric(label="Avg NIST Maturity Level", value=avg_maturity, delta="Continuous Improvement Target")
 
     st.write("##")
-    with st.container():
+    
+    # Live Control Monitor Container Block
+    with st.container(border=True):
         st.markdown("### 🚨 Live Control Monitor: SignalPath Interpret (`SP-AI-001`)")
         st.markdown(
             "**Control Loop Target:** Real-time risk mitigation engine verifying computer vision validation matrices "
             "for real-time sign language rendering pipelines."
         )
+        st.markdown("---")
         
         control_col1, control_col2 = st.columns([1, 2])
         
         with control_col1:
-            st.write("##") 
             confidence_score = st.slider(
                 "Simulated Ingestion Model Confidence Score (%)",
                 min_value=0,
@@ -187,7 +139,7 @@ with tab_command:
         with control_col2:
             if confidence_score < 75:
                 st.error(
-                    f"❌ **CRITICAL EXCEPTION: Model Confidence dropped to {confidence_score}% (LCL Threshold: <75%)**\n\n"
+                    f"**CRITICAL EXCEPTION: Model Confidence dropped to {confidence_score}% (LCL Threshold: <75%)**\n\n"
                     "**Breach Vector:** Spatial tracking degradation detected in localized extremity nodes (Digit 5 Occlusion Anomaly). "
                     "Signal path variance exceeds structural validation baseline.\n\n"
                     "**Automated Guardrail (0ms Latency):** Live model pipeline isolated. Traffic hot-swapped to standby human-in-the-loop interpreter stream."
@@ -199,7 +151,7 @@ with tab_command:
                 )
             else:
                 st.success(
-                    f"✅ **Continuous Control Operating Effectively ({confidence_score}%)**\n\n"
+                    f"**Continuous Control Operating Effectively ({confidence_score}%)**\n\n"
                     "Model tracking parameters are within baseline statistical variances. No human-in-the-loop interlocks required."
                 )
 
@@ -242,8 +194,9 @@ with tab_registry:
             selected_system = st.selectbox("Select an inventory asset to review its full enterprise profile:", options=df_filtered["system_name"].tolist())
             system_profile = df_filtered[df_filtered["system_name"] == selected_system].iloc[0]
             
-            with st.container():
+            with st.container(border=True):
                 st.markdown(f"#### Governance Profile Deep Dive: {selected_system}")
+                st.markdown("---")
                 
                 def get_field(field_name):
                     val = system_profile.get(field_name)
