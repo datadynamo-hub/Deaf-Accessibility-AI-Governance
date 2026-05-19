@@ -6,7 +6,7 @@ st.title("Deaf Accessibility AI Governance Project")
 st.header("AI System Inventory")
 
 # Locate the Excel file in the same subfolder
-file_name = "ai-system-inventory-signalpath.xlsx"
+file_name = "project-01-ai-system-inventory/ai-system-inventory-signalpath.xlsx"
 
 if os.path.exists(file_name):
     # Read the Excel data
