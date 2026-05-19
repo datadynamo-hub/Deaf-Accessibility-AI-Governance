@@ -28,7 +28,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("EU AI Act Classification")
     if os.path.exists(eu_file):
-        with open(eu_file, "r", encoding="utf-8") as f:
+        with open(eu_file, "r", encoding="utf-8", errors="ignore") as f:
             st.markdown(f.read())
     else:
         st.warning(f"Could not find: {eu_file}")
@@ -37,6 +37,6 @@ with col2:
     st.subheader("NIST RMF Mapping")
     if os.path.exists(nist_file):
         with open(nist_file, "r", encoding="utf-8") as f:
-            st.markdown(f.read())
+            with open(nist_file, "r", encoding="utf-8", errors="ignore") as f:
     else:
         st.warning(f"Could not find: {nist_file}")
