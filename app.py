@@ -907,7 +907,14 @@ elif st.session_state.view == "Gov Hub":
     with tab2:
         try:
             with open(os.path.join(POLICY_PATH, "governance-operating-model.md"), "r", encoding="utf-8", errors="ignore") as f:
-                st.markdown(f.read())
+                content = f.read()
+            if "<!-- GOVERNANCE_DIAGRAM -->" in content:
+                parts = content.split("<!-- GOVERNANCE_DIAGRAM -->")
+                st.markdown(parts[0])
+                st.image("assets/governance-structure.png", use_container_width=True)
+                st.markdown(parts[1])
+            else:
+                st.markdown(content)
         except Exception as e:
             st.error(f"Could not load Governance Operating Model: {e}")
 
