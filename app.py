@@ -508,7 +508,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 4, "inherent_i": 4, "inherent_score": 16, "inherent_level": "High",
             "residual_l": 2, "residual_i": 4, "residual_score": 8, "residual_level": "Medium",
             "summary": "Training data skewed toward narrow signer demographics produces systematic failures for users with physical limitations, regional dialect variation, non-native ASL, oral Deaf users, and older signers.",
-            "control_owner": "Chief Product Officer and AI Governance Program Office",
+            "accountable": "Chief Product Officer",
+            "responsible": "AI Governance Program Office",
         },
         "RISK-002": {
             "label": "RISK-002",
@@ -516,7 +517,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 3, "inherent_i": 5, "inherent_score": 15, "inherent_level": "High",
             "residual_l": 2, "residual_i": 3, "residual_score": 6, "residual_level": "Low",
             "summary": "No human-in-the-loop architecture defined for emergency relay calls. Misinterpretation during a 911 relay with no override path is a life-safety event and a direct FCC Part 64 violation.",
-            "control_owner": "Chief Product Officer and Head of VRS Operations",
+            "accountable": "Chief Product Officer",
+            "responsible": "Head of VRS Operations",
         },
         "RISK-003": {
             "label": "RISK-003",
@@ -524,7 +526,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 5, "inherent_i": 4, "inherent_score": 20, "inherent_level": "Critical",
             "residual_l": 2, "residual_i": 4, "residual_score": 8, "residual_level": "Medium",
             "summary": "SP-AI-001 is classified High Risk under EU AI Act Annex III. No conformity assessment initiated. Deployment without conformity assessment is direct non-compliance regardless of US headquarters.",
-            "control_owner": "AI Governance Program Office and General Counsel",
+            "accountable": "Ambiguous*",
+            "responsible": "AI Governance Program Office and General Counsel",
         },
         "RISK-004": {
             "label": "RISK-004",
@@ -532,7 +535,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 4, "inherent_i": 4, "inherent_score": 16, "inherent_level": "High",
             "residual_l": 2, "residual_i": 3, "residual_score": 6, "residual_level": "Low",
             "summary": "System processes hand shape, facial expression, and body position: biometric data under GDPR Article 9. No explicit consent framework or opt-out mechanism exists. Deaf users traveling internationally are covered by GDPR regardless of account origin.",
-            "control_owner": "Chief Privacy Officer and Legal",
+            "accountable": "Chief Privacy Officer",
+            "responsible": "Legal",
         },
         "RISK-005": {
             "label": "RISK-005",
@@ -540,7 +544,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 5, "inherent_i": 3, "inherent_score": 15, "inherent_level": "High",
             "residual_l": 2, "residual_i": 3, "residual_score": 6, "residual_level": "Low",
             "summary": "No Deaf person holds a seat in the governance structure. Accuracy thresholds and failure mode priorities are set by people who have not experienced a failed interpretation in a medical appointment or 911 call. This is a governance risk, not a diversity statement.",
-            "control_owner": "Chief Executive and AI Governance Program Office",
+            "accountable": "Chief Executive",
+            "responsible": "AI Governance Program Office",
         },
         "RISK-006": {
             "label": "RISK-006",
@@ -548,7 +553,8 @@ elif st.session_state.view == "Risk Intelligence":
             "inherent_l": 3, "inherent_i": 3, "inherent_score": 9, "inherent_level": "Medium",
             "residual_l": 1, "residual_i": 3, "residual_score": 3, "residual_level": "Low",
             "summary": "ASL is a living language. A model trained on 2024 signing data will encounter patterns in 2026 and beyond that were not in training. Without ongoing monitoring the degradation goes undetected until users are harmed.",
-            "control_owner": "Chief Product Officer and Engineering Lead",
+            "accountable": "Chief Product Officer",
+            "responsible": "Engineering Lead",
         },
     }
 
@@ -655,10 +661,22 @@ elif st.session_state.view == "Risk Intelligence":
         hc1, hc2, hc3 = st.columns(3)
         with hc1: st.metric("Risk Score", score_show)
         with hc2: st.metric("Risk Level", level_show)
-        with hc3: st.metric("Control Owner", rd["control_owner"] if len(rd["control_owner"]) <= 35 else rd["control_owner"][:33] + "...")
+        with hc3:
+            acct_style = "font-style:italic;" if rd["accountable"] == "Ambiguous*" else ""
+            st.markdown(
+                f"<div style='padding:0.25rem 0;'>"
+                f"<div style='font-size:0.8rem;color:#6b7280;margin-bottom:0.2rem;'>Accountable</div>"
+                f"<div style='font-size:1rem;font-weight:600;margin-bottom:0.6rem;{acct_style}'>{rd['accountable']}</div>"
+                f"<div style='font-size:0.8rem;color:#6b7280;margin-bottom:0.2rem;'>Responsible</div>"
+                f"<div style='font-size:0.95rem;'>{rd['responsible']}</div>"
+                f"</div>",
+                unsafe_allow_html=True
+            )
         st.markdown(f"**{rd['name']}**")
         st.markdown(rd["summary"])
         st.markdown("</div>", unsafe_allow_html=True)
+    if selected_risk_key == "RISK-003":
+        st.caption("\\*The most defensible answer is that the Chief Product Officer is Accountable (it's their system, they cannot deploy without it).")
 
     # Governance memo
     st.write("##")
