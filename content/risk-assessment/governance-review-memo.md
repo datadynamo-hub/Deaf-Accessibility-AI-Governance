@@ -1,10 +1,20 @@
 # Governance Review Memo
 
 **To:** Chief Executive Officer, Board Risk and Audit Committee
-**From:** AI Governance Program Office
+**From:** Proposed AI Governance Program Office (AGPO)
 **Subject:** SignalPath Interpret (SP-AI-001) - Governance Review and Production Deployment Decision
 **Classification:** Confidential
 **Date:** May 2026
+
+---
+
+## Background: Why the Proposed AI Governance Program Office (AGPO) Was Formed
+
+Upon identifying that key stakeholders had no actual representation from Deaf users in decisions about AI systems built to serve them, SignalPath convened the Proposed AGPO to give the Deaf community a seat at the table.
+
+The Proposed AGPO is a cross-functional committee of existing leaders drawn from Legal, Information Security, Information Technology (IT), Interpreting Services, Product Management, and the Office of the Chief Privacy Officer (CPO), together with Deaf community members and subject matter experts with lived experience using the services this AI is designed to support.
+
+The Proposed AGPO's mandate is to ensure that AI development at SignalPath is accountable to the community it affects, compliant with applicable law, and safe before it reaches any user. This memo reflects the committee's first formal findings and its recommendation to the Board.
 
 ---
 
@@ -18,7 +28,7 @@ The Board is asked to review the findings, approve the recommended conditions fo
 
 ## Executive Summary
 
-SignalPath Interpret is under active development and is being evaluated for production deployment across SignalPath's VRS operations. It would replace or supplement human interpreters for real-time ASL interpretation in calls that include medical appointments, legal proceedings, and emergency relay to 911.
+SignalPath Interpret is under active development and is being evaluated for production deployment across SignalPath's VRS (Video Relay Service) operations. It would replace or supplement human interpreters for real-time ASL interpretation in calls that include medical appointments, legal proceedings, and emergency relay to 911.
 
 The governance review has identified that the system is not ready for production deployment in its current state. Specifically:
 
@@ -30,7 +40,7 @@ The governance review has identified that the system is not ready for production
 
 These are not minor documentation gaps. They represent legal exposure under the EU AI Act and FCC Part 64, direct risk of harm to the Deaf community SignalPath serves, and an organizational posture that puts product timeline ahead of community safety.
 
-**The recommended Board decision: approve production deployment only after all five conditions in this memo are met and confirmed by the AI Governance Program Office. No deployment date should be set before that confirmation.**
+**The recommended Board decision: approve production deployment only after all five conditions in this memo are met and confirmed by the Proposed AGPO. No deployment date should be set before that confirmation.**
 
 ---
 
@@ -44,7 +54,7 @@ SignalPath operates as both developer and deployer of this system. That means th
 
 None of these have been initiated.
 
-FCC Part 64 applies independently of the EU AI Act. The functional equivalency standard requires that VRS provide access substantially equivalent to voice telephone service for hearing users. A Deaf person whose AI interpreter produces a wrong sign in a 911 call is not receiving functional equivalency. The FCC does not recognize "we were still in development" as a defense after deployment.
+FCC (Federal Communications Commission) Part 64 applies independently of the EU AI Act. The functional equivalency standard requires that VRS provide access substantially equivalent to voice telephone service for hearing users. A Deaf person whose AI interpreter produces a wrong sign in a 911 call is not receiving functional equivalency. The FCC does not recognize "we were still in development" as a defense after deployment.
 
 ### 2. The Emergency Call Gap
 
@@ -66,7 +76,7 @@ We do not know whether SignalPath Interpret's training data includes this variat
 
 ### 4. Biometric Consent Is Not Optional
 
-Every session of SignalPath Interpret processes biometric data: hand shape, facial expression, body position. GDPR Article 9 requires explicit consent for biometric data processing. No consent framework exists. No disclosure has been provided to POC participants. No opt-out mechanism is available.
+Every session of SignalPath Interpret processes biometric data: hand shape, facial expression, body position. GDPR (General Data Protection Regulation) Article 9 requires explicit consent for biometric data processing. No consent framework exists. No disclosure has been provided to POC (proof of concept) participants. No opt-out mechanism is available.
 
 Deaf users traveling internationally from the US to EU countries while using SignalPath services are subject to GDPR protections regardless of where their account was created. Compliance is being broken accidentally, at scale, every time a Deaf traveler uses the service abroad. This is not a future risk. It is a current one.
 
@@ -92,17 +102,17 @@ Medium residual risk is an acceptable level for a system of this kind, provided 
 
 | Condition | Owner | Required By |
 |-----------|-------|-------------|
-| Conformity assessment formally initiated with documented owner and timeline | AI Governance Program Office and General Counsel | Before deployment date is set |
-| Emergency call routing to human interpreters only, architecture documented and tested | Chief Product Officer and Head of VRS Operations | Before deployment date is set |
+| Conformity assessment formally initiated with documented owner and timeline | Proposed AGPO and General Counsel | Before deployment date is set |
+| Emergency call routing to human interpreters only, architecture documented and tested | Chief Product Officer and Head of Interpreting Services | Before deployment date is set |
 | Biometric data consent framework active for all users, including POC participants | Chief Privacy Officer and Legal | Before deployment date is set |
-| Bias audit commissioned with independent auditor and scope defined | AI Governance Program Office | Before deployment date is set |
-| Deaf Community Advisory Panel established with documented governance role | Chief Executive and AI Governance Program Office | Before deployment date is set |
+| Bias audit commissioned with independent auditor and scope defined | Proposed AGPO | Before deployment date is set |
+| Deaf Community Advisory Panel established with documented governance role | Chief Executive and Proposed AGPO | Before deployment date is set |
 
 ### Within 60 Days of Production Deployment
 
 | Action | Owner | Timeline |
 |--------|-------|---------|
-| Bias audit completed and results reviewed by AI Governance Program Office | AI Governance Program Office | 60 days |
+| Bias audit completed and results reviewed by Proposed AGPO | Proposed AGPO | 60 days |
 | User feedback mechanism active in VRS interface for interpretation error flagging | Engineering Lead | 60 days |
 | Monthly accuracy report by signer demographic segment established | Chief Product Officer | 60 days |
 
@@ -110,8 +120,8 @@ Medium residual risk is an acceptable level for a system of this kind, provided 
 
 | Action | Owner | Timeline |
 |--------|-------|---------|
-| Conformity assessment completed | AI Governance Program Office | 90 days |
-| Board-level report on SignalPath Interpret performance, compliance status, and open risk items | AI Governance Program Office | 90 days |
+| Conformity assessment completed | Proposed AGPO | 90 days |
+| Board-level report on SignalPath Interpret performance, compliance status, and open risk items | Proposed AGPO | 90 days |
 | Full production monitoring framework active with defined accuracy thresholds | Chief Product Officer and Engineering Lead | 90 days |
 
 ---
@@ -121,23 +131,7 @@ Medium residual risk is an acceptable level for a system of this kind, provided 
 The Board is asked to approve one of the following:
 
 **Option A - Conditional Deployment Approval (Recommended)**
-Approve production deployment of SignalPath Interpret subject to all five gate conditions being met and confirmed by the AI Governance Program Office before a deployment date is set. This option allows the product timeline to proceed while ensuring the community is protected before the system goes live.
+Approve production deployment of SignalPath Interpret subject to all five gate conditions being met and confirmed by the Proposed AGPO before a deployment date is set. This option allows the product timeline to proceed while ensuring the community is protected before the system goes live.
 
 **Option B - Pause Development Pending Governance**
-Pause production deployment planning until the governance program catches up to the development timeline. Use this period to complete the conformity assessment, bias audit, and consent framework before any deployment date is discussed. This option eliminates regulatory exposure entirely but delays the product roadmap.
-
-**The AI Governance Program Office recommends Option A**, on the basis that the five gate conditions are achievable in parallel with ongoing development, and that a hard stop on deployment without those conditions is more protective of the Deaf community than a flexible timeline that treats governance as optional.
-
----
-
-## Escalation if Gate Conditions Are Not Met
-
-If a production deployment date is set before the AI Governance Program Office confirms all five gate conditions are met, the AI Governance Program Office will escalate to the Chief Compliance Officer and the Board Risk and Audit Committee with a recommendation to block deployment.
-
-The Deaf community that SignalPath serves cannot be the variable that gets cut when the product timeline runs short. That is the point of a governance gate.
-
----
-
-*Attachments: AI Risk Assessment - SignalPath Interpret, SP-AI-001 (May 2026)*
-
-*Prepared by: AI Governance Program Office, SignalPath Technologies*
+Pause production deployment planning until the governance program catches up to the development timeline. Use this period to complete the conformity assessment, bias audit, and consent framework 

@@ -48,7 +48,7 @@ SignalPath's responsible AI program is grounded in five principles. Each princip
 
 **What this means in practice:**
 
-- Before deployment, AI systems that affect individuals must be assessed for potential bias across relevant protected characteristics, including disability status, age, signing style, regional ASL dialect, and physical mobility
+- Before deployment, AI systems that affect individuals must be assessed for potential bias across relevant protected characteristics, including disability status, age, signing style, regional ASL (American Sign Language) dialect, and physical mobility
 - "Deaf users" is not a homogenous population. An AI system trained primarily on native ASL signers may systematically fail oral Deaf users, signers with physical limitations affecting hand movement, or signers using regional variants. Bias assessment must account for variation within the Deaf community, not only across demographic categories used in general population assessments
 - High-risk AI systems must undergo documented bias evaluation before go-live and at defined intervals thereafter. For SignalPath Interpret (SP-AI-001), bias evaluation must cover signer variation, regional dialect, physical limitation, and the oral/ASL distinction before any production deployment
 - Where a system is found to produce discriminatory outputs, it will be suspended or modified until the issue is resolved
@@ -92,7 +92,7 @@ SignalPath's responsible AI program is grounded in five principles. Each princip
 
 - AI systems must be tested against adversarial inputs and edge cases before deployment
 - Performance thresholds must be defined at deployment and monitored continuously. Degradation below defined thresholds triggers a formal review
-- AI systems must not be deployed in safety-critical contexts without specific Board approval and documented safety analysis. VRS emergency relay calls are a safety-critical context. Any AI system operating in the 911 relay pathway requires Board-level approval and a documented human interpreter failover architecture before deployment
+- AI systems must not be deployed in safety-critical contexts without specific Board approval and documented safety analysis. VRS (Video Relay Service) emergency relay calls are a safety-critical context. Any AI system operating in the 911 relay pathway requires Board-level approval and a documented human interpreter failover architecture before deployment
 - Human override capability must be maintained for all AI systems that affect individuals. For SignalPath Interpret operating in relay contexts, this means a human interpreter must be available to take over any call where AI confidence falls below defined thresholds or where the user requests it
 
 ---
@@ -144,7 +144,7 @@ All AUCRs are triaged within five business days. Triage determines the review pa
 All AI systems are assessed and classified before deployment:
 
 - **EU AI Act risk tier** (Unacceptable / High / Limited / Minimal): SignalPath applies the EU AI Act as its ethical benchmark globally, not only where legally mandated
-- **NIST AI RMF maturity baseline**: to identify governance gaps across Govern, Map, Measure, and Manage functions
+- **NIST (National Institute of Standards and Technology) AI RMF (Risk Management Framework) maturity baseline**: to identify governance gaps across Govern, Map, Measure, and Manage functions
 - **Organizational risk rating**: combining regulatory and business risk factors specific to VRS and accessibility technology operations
 
 High-risk systems require Enhanced Review, which includes external input where appropriate and Deaf Community Advisory Panel consultation for systems affecting Deaf users.
@@ -212,13 +212,13 @@ If a governance policy cannot be explained in ASL, that is a signal the policy i
 | **Chief Executive** | Accountable for organizational AI governance posture; chairs or delegates AI Governance Committee; approves Deaf Community Advisory Panel structure |
 | **Chief Risk Officer** | Policy owner; co-chairs AI Governance Committee; escalation point for material AI risk events |
 | **Chief Compliance Officer** | Regulatory compliance interface; escalation point when gate conditions are not met before deployment; incident response coordination |
-| **Chief Privacy Officer** | GDPR, CCPA, and AI Act data governance interface; co-reviews high-risk assessments; biometric consent framework owner |
+| **Chief Privacy Officer** | GDPR (General Data Protection Regulation), CCPA (California Consumer Privacy Act), and AI Act data governance interface; co-reviews high-risk assessments; biometric consent framework owner |
 | **General Counsel** | Regulatory interpretation; contract review for vendor AI provisions; conformity assessment coordination |
 | **AI Governance Committee** | Cross-functional governance body; approves high-risk systems; reviews incidents; oversees compliance with this policy |
 | **AI Governance Program Office** | Program coordination; use case triage; AI System Inventory maintenance; training; reporting to the Committee and Board |
 | **System Owners** | Accountability for individual AI systems; day-to-day oversight; escalation to the Program Office |
 | **Chief Product Officer** | Accountable for product AI system performance; gate condition owner for production deployment decisions |
-| **Head of VRS Operations** | Accountable for emergency call routing architecture and human interpreter failover |
+| **Head of Interpreting Services** | Accountable for emergency call routing architecture and human interpreter failover |
 | **Engineering Lead** | Technical implementation of governance controls; model documentation; monitoring infrastructure |
 | **Information Security** | Cybersecurity and adversarial robustness assessment for AI systems |
 | **Deaf Community Advisory Panel** | Structured community input on design decisions, accuracy thresholds, and acceptable failure rates for AI systems serving Deaf users; documented governance role, not advisory only |
@@ -251,7 +251,7 @@ The Deaf community that SignalPath serves cannot be the variable that gets cut w
 
 This policy will be reviewed annually or upon material change in:
 
-- Applicable law or regulation, including the EU AI Act, FCC Part 64, ADA Title IV, GDPR, or state privacy law developments in California, Texas, or Illinois
+- Applicable law or regulation, including the EU AI Act, FCC (Federal Communications Commission) Part 64, ADA (Americans with Disabilities Act) Title IV, GDPR, or state privacy law developments in California, Texas, or Illinois
 - SignalPath's AI portfolio or operating model, including deployment of new AI systems or material changes to existing systems
 - Material AI incidents internally or industry-wide that warrant policy updates, including AI interpretation failures at other VRS providers
 

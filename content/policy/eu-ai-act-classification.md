@@ -1,4 +1,4 @@
-# EU AI Act Risk Classification — SignalPath Technologies
+# EU AI Act Risk Classification: SignalPath Technologies
 
 **Classification Date:** May 2026
 **Prepared by:** AI Governance Program Office
@@ -10,7 +10,7 @@
 
 The EU AI Act establishes four risk tiers. Classification determines the compliance obligations that attach to a system. This document records the classification decision and rationale for each AI system in SignalPath's inventory.
 
-SignalPath applies the EU AI Act as its ethical benchmark globally, not only where legally mandated. EU-facing operations, GDPR biometric data obligations, and the presence of traveling US Deaf users accessing SignalPath services from EU countries create real regulatory surface area. Building to the strictest available standard protects the community SignalPath serves.
+SignalPath applies the EU AI Act as its ethical benchmark globally, not only where legally mandated. EU-facing operations, GDPR (General Data Protection Regulation) biometric data obligations, and the presence of traveling US Deaf users accessing SignalPath services from EU countries create real regulatory surface area. Building to the strictest available standard protects the community SignalPath serves.
 
 ### Risk Tier Overview
 
@@ -19,7 +19,7 @@ SignalPath applies the EU AI Act as its ethical benchmark globally, not only whe
 | **Unacceptable Risk** | Prohibited. System must not be deployed. |
 | **High Risk** | Strict pre-deployment obligations. Conformity assessment required. Ongoing monitoring, logging, human oversight, and documentation mandated. |
 | **Limited Risk** | Transparency obligations. Users must be informed they are interacting with an AI. |
-| **Minimal Risk** | No specific regulatory obligations under the Act. General sector rules (FCC, GDPR, ADA) still apply. |
+| **Minimal Risk** | No specific regulatory obligations under the Act. General sector rules (FCC (Federal Communications Commission), GDPR, ADA (Americans with Disabilities Act)) still apply. |
 
 ---
 
@@ -35,7 +35,7 @@ SignalPath applies the EU AI Act as its ethical benchmark globally, not only whe
 
 **Rationale:**
 
-SignalPath Interpret processes biometric data — hand shape, facial expression, body position — simultaneously to translate ASL in real time. In ASL, facial expressions carry grammatical meaning: a raised eyebrow changes a statement into a question. A model that gets the hands right but the face wrong is not making a translation error. It is producing a different sentence.
+SignalPath Interpret processes biometric data (hand shape, facial expression, body position) simultaneously to translate ASL (American Sign Language) in real time. In ASL, facial expressions carry grammatical meaning: a raised eyebrow changes a statement into a question. A model that gets the hands right but the face wrong is not making a translation error. It is producing a different sentence.
 
 This is not a productivity tool. It is the communication channel itself for Deaf users. Errors carry direct consequences in medical appointments, legal proceedings, and emergency relay calls. A misclassified sign on a 911 relay call is a life-safety event.
 
@@ -83,7 +83,7 @@ Voice data processed in real time constitutes biometric data under GDPR. Ephemer
 
 **Rationale:**
 
-The call routing model matches VRS calls to available interpreters. Human override is available at all times. A misrouted call is corrected by the next available interpreter and does not constitute a denial of access to services.
+The call routing model matches VRS (Video Relay Service) calls to available interpreters. Human override is available at all times. A misrouted call is corrected by the next available interpreter and does not constitute a denial of access to services.
 
 If the routing model ever incorporates caller behavioral scoring or profiling beyond operational matching, classification must be revisited immediately.
 
@@ -117,7 +117,7 @@ SignalPath CaptionLine AI provides home phone captioning for hard-of-hearing use
 
 ---
 
-### SP-AI-005 · Microsoft Copilot (M365)
+### SP-AI-005 · Microsoft Copilot (Microsoft 365, M365)
 
 **Classification: LIMITED RISK**
 
@@ -125,7 +125,7 @@ SignalPath CaptionLine AI provides home phone captioning for hard-of-hearing use
 
 **Rationale:**
 
-Microsoft Copilot is embedded across M365. The EU AI Act tier is Limited. The data governance profile is not. Copilot can ingest emails, meeting transcripts, SharePoint documents, and Teams chat history across the entire M365 tenant. If that data includes relay call strategy, interpreter personal data, FCC compliance discussions, or HR records, Copilot's data access scope becomes a governance event independent of its EU AI Act classification.
+Microsoft Copilot is embedded across M365. The EU AI Act tier is Limited. The data governance profile is not. Copilot can ingest emails, meeting transcripts, SharePoint documents, and Teams chat history across the entire M365 tenant. If that data includes relay call strategy, interpreter personal data, FCC compliance discussions, or Human Resources (HR) records, Copilot's data access scope becomes a governance event independent of its EU AI Act classification.
 
 **Obligations triggered:**
 
@@ -203,7 +203,7 @@ One SignalPath-specific risk that does not exist in a standard Zendesk deploymen
 
 ---
 
-### SP-AI-009 · Autogen AI (RFP Platform)
+### SP-AI-009 · Autogen AI (Request for Proposal, RFP Platform)
 
 **Classification: MINIMAL RISK**
 
@@ -272,7 +272,7 @@ If Gong outputs inform performance reviews or termination decisions for sales st
 
 **Rationale:**
 
-GitHub Copilot assists engineers with code generation. EU AI Act risk tier is minimal. The data governance risk is not. Engineers may inadvertently include API keys, internal data schemas, or proprietary architecture in Copilot prompts processed by GitHub's servers. Personal Copilot accounts used outside the enterprise license are Shadow AI (see SP-AI-016).
+GitHub Copilot assists engineers with code generation. EU AI Act risk tier is minimal. The data governance risk is not. Engineers may inadvertently include Application Programming Interface (API) keys, internal data schemas, or proprietary architecture in Copilot prompts processed by GitHub's servers. Personal Copilot accounts used outside the enterprise license are Shadow AI (see SP-AI-016).
 
 **Obligations triggered:**
 
@@ -299,7 +299,7 @@ Documents processed include privileged legal communications, FCC compliance stra
 **Obligations triggered:**
 
 - Article 28: data processing agreement must explicitly address outside counsel's AI tool use
-- GDPR: Harvey AI must be identified as a sub-processor in the DPA
+- GDPR: Harvey AI must be identified as a sub-processor in the Data Processing Agreement (DPA)
 - Outside counsel engagement agreement must require AI tool disclosure and prior approval
 - SignalPath retains audit rights over AI-processed outputs
 
@@ -347,15 +347,15 @@ Sentinel monitors the M365 environment for security threats. AI-automated respon
 
 ---
 
-### SP-AI-016 · Shadow AI — Unmanaged Employee AI Use
+### SP-AI-016 · Shadow AI: Unmanaged Employee AI Use
 
-**Classification: UNCLASSIFIABLE — TREATED AS HIGH RISK PENDING DISCOVERY**
+**Classification: UNCLASSIFIABLE. TREATED AS HIGH RISK PENDING DISCOVERY.**
 
 **Legal Basis:** EU AI Act classification requires knowing which systems are in use, what data they process, and under what terms. Classification is impossible until discovery is complete. Precautionary principle applies: treat as High Risk. GDPR Article 5 (data integrity and confidentiality) is violated by definition when employees submit corporate data to unvetted consumer AI tools without data processing agreements in place.
 
 **Rationale:**
 
-Shadow AI is not a single system. It is a risk class representing every AI tool currently in use by SignalPath employees without IT approval, security review, or a data processing agreement. Industry data confirms shadow AI adoption is active and significant at organizations of this size and sector.
+Shadow AI is not a single system. It is a risk class representing every AI tool currently in use by SignalPath employees without Information Technology (IT) approval, security review, or a data processing agreement. Industry data confirms shadow AI adoption is active and significant at organizations of this size and sector.
 
 The VRS context elevates this from a data governance gap to a potential regulatory event. FCC rules protect relay call content as legally privileged communication. An interpreter coordinator summarizing call logs in ChatGPT, a legal staff member uploading a contract to Claude, an engineer pasting an internal API schema into Gemini: each instance is a potential FCC compliance violation with no audit trail and no remediation path.
 
@@ -363,7 +363,7 @@ Known shadow AI categories in this environment: consumer LLMs (ChatGPT, Claude, 
 
 **Obligations triggered:**
 
-- Immediate discovery: CASB or firewall log audit, browser extension scan via endpoint management, expense report review for micro-transactions to AI vendors
+- Immediate discovery: Cloud Access Security Broker (CASB) or firewall log audit, browser extension scan via endpoint management, expense report review for micro-transactions to AI vendors
 - GDPR: data processing agreements required for any tool touching personal data
 - FCC: relay call content must not be processed by any system outside SignalPath's control without explicit policy and legal review
 - Employee AI acceptable use policy required before this inventory is presented to the board
@@ -396,4 +396,4 @@ Known shadow AI categories in this environment: consumer LLMs (ChatGPT, Claude, 
 
 ---
 
-*Classification decisions are not static. Review required annually or upon material change to any system's design, purpose, deployment context, or applicable regulatory framework. Three systems carry Critical priority and require immediate action before this inventory is presented to the board.*
+*Classification decisions are not static. Review required annually or upon material change to any system's design, purpose, deployment context, 

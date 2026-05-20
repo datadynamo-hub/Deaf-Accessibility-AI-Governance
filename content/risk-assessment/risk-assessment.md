@@ -1,9 +1,9 @@
 # AI Risk Assessment - SignalPath Interpret
 
 **System:** SP-AI-001 - SignalPath Interpret
-**Version Assessed:** POC v1.0 (pre-production)
+**Version Assessed:** POC (proof of concept) v1.0 (pre-production)
 **Assessment Date:** May 2026
-**Prepared by:** AI Governance Program Office
+**Prepared by:** Proposed AI Governance Program Office (AGPO)
 **Review Status:** Draft - pending Board endorsement
 
 ---
@@ -67,7 +67,7 @@ Training data composition has not been documented. No bias audit has been conduc
 
 **Likelihood:** 4 - Demographic bias in biometric AI training data is well-documented. No audit has been performed to demonstrate this system is an exception. Physical limitation failure modes are unaddressed in current POC documentation.
 
-**Impact:** 4 - Systematic interpretation failures for specific Deaf user populations constitutes discriminatory service delivery under ADA Title IV functional equivalency standards. In emergency relay contexts, impact escalates to 5.
+**Impact:** 4 - Systematic interpretation failures for specific Deaf user populations constitutes discriminatory service delivery under ADA (Americans with Disabilities Act) Title IV functional equivalency standards. In emergency relay contexts, impact escalates to 5.
 
 **Inherent Risk Score: 16 - HIGH**
 
@@ -87,7 +87,7 @@ Training data composition has not been documented. No bias audit has been conduc
 ### RISK-002 - Emergency Call Failure with No Human Override Architecture
 
 **Description:**
-VRS calls include emergency relay calls to 911 and other emergency services. If SignalPath Interpret misinterprets a sign during an emergency call and no human interpreter can override, the result is a failed emergency communication. FCC Part 64 establishes a functional equivalency standard: relay services must provide access substantially equivalent to voice telephone service for hearing users. A 911 caller who cannot be understood is not receiving functional equivalency.
+VRS calls include emergency relay calls to 911 and other emergency services. If SignalPath Interpret misinterprets a sign during an emergency call and no human interpreter can override, the result is a failed emergency communication. FCC (Federal Communications Commission) Part 64 establishes a functional equivalency standard: relay services must provide access substantially equivalent to voice telephone service for hearing users. A 911 caller who cannot be understood is not receiving functional equivalency.
 
 No human-in-the-loop architecture has been defined for emergency calls. No incident response plan exists for interpretation failure during emergency relay. The current POC does not address this scenario.
 
@@ -105,7 +105,7 @@ No human-in-the-loop architecture has been defined for emergency calls. No incid
 
 **Residual Risk Score (with controls): 6 - LOW**
 
-**Control Owner:** Chief Product Officer and Head of VRS Operations
+**Control Owner:** Chief Product Officer and Head of Interpreting Services
 **Timeline:** This control must be implemented and tested before any production deployment. It is a non-negotiable gate condition.
 
 ---
@@ -140,7 +140,7 @@ Technical documentation under Article 11 and Annex IV has not been prepared. Log
 ### RISK-004 - Biometric Data Processing Without a Consent Framework
 
 **Description:**
-SignalPath Interpret processes biometric data: hand shape, facial expression, and body position. Under GDPR Article 9, biometric data used to identify individuals is a special category requiring explicit consent. VRS users currently receive no explicit disclosure that their biometric data is being processed by an AI system. No opt-out mechanism exists.
+SignalPath Interpret processes biometric data: hand shape, facial expression, and body position. Under GDPR (General Data Protection Regulation) Article 9, biometric data used to identify individuals is a special category requiring explicit consent. VRS users currently receive no explicit disclosure that their biometric data is being processed by an AI system. No opt-out mechanism exists.
 
 Deaf users traveling to EU countries while using SignalPath services add additional GDPR surface area. An American Deaf user making a VRS call from France is subject to GDPR protections regardless of where their account was created.
 
@@ -154,7 +154,7 @@ Deaf users traveling to EU countries while using SignalPath services add additio
 - Develop an explicit consent framework before any expanded POC or production deployment: clear disclosure that AI processes biometric data, an opt-out mechanism, and plain-language explanation available in ASL video format, not English text only
 - Update the privacy notice to reflect biometric data processing
 - Confirm legal basis for biometric data processing under GDPR Article 9(2)
-- Conduct a GDPR Data Protection Impact Assessment per Article 35: processing biometric data at scale triggers a mandatory DPIA
+- Conduct a GDPR Data Protection Impact Assessment (DPIA) per Article 35: processing biometric data at scale triggers a mandatory DPIA
 - Apply the consent framework to all current POC participants immediately
 
 **Residual Risk Score (with controls): 6 - LOW**
@@ -266,4 +266,4 @@ Human oversight for SignalPath Interpret must be built into the architecture. Pr
 
 ---
 
-*This assessment reflects pre-production status as of May 2026. Risk ratings must be reviewed before production deployment, after any material change to the system or its training data, and upon new regulatory guidance from the FCC, NIST, or EU AI Act implementing authorities.*
+*This assessment reflects pre-production status as of May 2026. Risk ratings must be reviewed before production deployment, after any material change to the system or its training data, and upon new regulatory guidance from the FCC, NIST (National Institute of Standards and Technology), or EU AI Act implementing authorities.*

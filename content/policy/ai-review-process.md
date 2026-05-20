@@ -26,11 +26,11 @@ Plain definitions for terms used in this document:
 
 **EU AI Act:** A European law that classifies AI systems by risk level and sets requirements for how high-risk systems must be built, tested, and monitored. SignalPath applies it globally as its ethical standard, even for US operations.
 
-**GDPR:** A European privacy law governing how personal data is collected, stored, and used. Applies to SignalPath because Deaf users in the US travel internationally and access SignalPath services from EU countries.
+**GDPR (General Data Protection Regulation):** A European privacy law governing how personal data is collected, stored, and used. Applies to SignalPath because Deaf users in the US travel internationally and access SignalPath services from EU countries.
 
-**CCPA:** A California privacy law with similar goals to GDPR. Applies to SignalPath's California users and operations.
+**CCPA (California Consumer Privacy Act):** A California privacy law with similar goals to GDPR. Applies to SignalPath's California users and operations.
 
-**FCC Part 64:** The US federal rules governing Video Relay Service, including call confidentiality and service reliability requirements.
+**FCC (Federal Communications Commission) Part 64:** The US federal rules governing Video Relay Service, including call confidentiality and service reliability requirements.
 
 **Conformity assessment:** A formal review confirming that a high-risk AI system meets legal requirements before it goes live. Required by the EU AI Act for systems like SignalPath Interpret.
 
@@ -140,7 +140,7 @@ Covers:
 - Confirming the risk level assigned at intake
 - Checking that the data being used follows US and European privacy law and FCC rules on relay call confidentiality
 - Confirming that humans will review AI outputs where appropriate
-- Checking that users are told when AI is involved in decisions that affect them. For systems affecting Deaf users, this notice must be accessible, including an ASL summary where applicable
+- Checking that users are told when AI is involved in decisions that affect them. For systems affecting Deaf users, this notice must be accessible, including an ASL (American Sign Language) summary where applicable
 - Reviewing the vendor's data and AI practices, if this is a purchased system
 
 **Who reviews:** The AI Governance Program Office, with the Chief Privacy Officer consulted when the system handles personal, biometric, or relay call data.
@@ -173,9 +173,9 @@ Covers everything in Standard Review, plus:
 |----------|-------------|
 | AI Governance Program Office | Coordinates the review; produces the risk assessment |
 | Chief Privacy Officer | Reviews privacy law compliance and the biometric data consent process |
-| Legal / General Counsel | Reviews regulatory obligations under FCC, ADA, and AI law; reviews vendor contracts |
+| Legal / General Counsel | Reviews regulatory obligations under FCC, ADA (Americans with Disabilities Act), and AI law; reviews vendor contracts |
 | Information Security | Reviews cybersecurity risks and whether the system can be manipulated or attacked |
-| ML Engineering | Reviews whether the proposed technical controls are actually buildable |
+| Advanced Sign Technology (AST) | Reviews whether the proposed technical controls are actually buildable |
 | Independent auditor | Reviews whether the system treats all users fairly, for high-risk systems where bias is a concern |
 | Deaf Community Advisory Panel | Required for any system that processes biometric data from Deaf users, operates in real-time relay or interpretation, sets accuracy standards for ASL AI, or affects emergency calls. This participation is not optional and cannot be skipped because of timeline pressure. |
 

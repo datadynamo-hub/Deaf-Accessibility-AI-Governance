@@ -1,8 +1,8 @@
-# Root Cause Analysis — SP-INC-2026-001
+# Root Cause Analysis (RCA): SP-INC-2026-001
 
 **Incident:** SP-AI-001 Skin Tone Accuracy Disparity
 **RCA Status:** Final
-**Prepared by:** AI Governance Program Office (AGPO) and ML Engineering
+**Prepared by:** AI Governance Program Office (AGPO) and Advanced Sign Technology (AST)
 **Review Date:** 19 June 2026
 **Approved by:** AI Governance Committee
 
@@ -40,7 +40,7 @@ Because the training dataset was assembled without documented demographic compos
 
 **Why 3: Why did no demographic representation requirement exist for the training dataset?**
 
-Because the bias audit — which was a gate condition for expanded POC — was scoped to cover signer variation broadly (regional dialect, physical limitation, non-native ASL, oral Deaf users) but did not explicitly include skin tone normalization in the computer vision pipeline as a test dimension. The audit was commissioned and in progress, but the audit scope did not catch the specific failure mode that the incident exposed.
+Because the bias audit, which was a gate condition for expanded POC, was scoped to cover signer variation broadly (regional dialect, physical limitation, non-native ASL (American Sign Language), oral Deaf users) but did not explicitly include skin tone normalization in the computer vision pipeline as a test dimension. The audit was commissioned and in progress, but the audit scope did not catch the specific failure mode that the incident exposed.
 
 ---
 
@@ -52,7 +52,7 @@ Because the bias audit scope was defined without specific input from the Deaf Co
 
 **Why 5: Why did the gate conditions allow expanded POC to proceed with the bias audit incomplete and the audit scope unreviewed by the Panel?**
 
-Because the gate conditions, as written, required that the bias audit be commissioned — not completed. The gate condition read: "Bias audit commissioned with independent auditor and scope defined." This allowed deployment to proceed while the audit that was supposed to catch this exact class of failure was still in progress. The gate condition was technically met while the risk it was designed to mitigate remained unaddressed.
+Because the gate conditions, as written, required that the bias audit be commissioned, not completed. The gate condition read: "Bias audit commissioned with independent auditor and scope defined." This allowed deployment to proceed while the audit that was supposed to catch this exact class of failure was still in progress. The gate condition was technically met while the risk it was designed to mitigate remained unaddressed.
 
 **Root cause:** The gate condition for bias audit completion was insufficient. Allowing expanded POC deployment before a completed, Panel-reviewed bias audit placed Deaf users at risk from the exact failure mode the audit was designed to detect. The bias audit should have been a completion gate, not a commissioning gate, for any deployment involving real users.
 
@@ -62,9 +62,9 @@ Because the gate conditions, as written, required that the bias audit be commiss
 
 ### CF-1: Demographic Monitoring Not Operational at POC Launch
 
-The monitoring framework was designed to include a demographic segmentation layer tracking confidence scores and accuracy by user demographic proxies. This layer was not configured before POC expansion — it was scheduled for post-launch setup. As a result, the automated monitoring system would not have detected the disparity even if it had been operating normally. The incident was detected by the Advisory Panel, not by monitoring.
+The monitoring framework was designed to include a demographic segmentation layer tracking confidence scores and accuracy by user demographic proxies. This layer was not configured before POC expansion. It was scheduled for post-launch setup. As a result, the automated monitoring system would not have detected the disparity even if it had been operating normally. The incident was detected by the Advisory Panel, not by monitoring.
 
-**Implication:** Demographic monitoring is not an enhancement — it is a prerequisite. Any deployment involving real users must have demographic accuracy monitoring operational before the first call is processed.
+**Implication:** Demographic monitoring is not an enhancement. It is a prerequisite. Any deployment involving real users must have demographic accuracy monitoring operational before the first call is processed.
 
 ---
 
@@ -72,7 +72,7 @@ The monitoring framework was designed to include a demographic segmentation laye
 
 The bias audit scope was finalized by the AGPO and engineering team. The Deaf Community Advisory Panel was not consulted on which failure modes to prioritize, which demographic dimensions to test, or what constitutes an acceptable result. A Panel-reviewed audit scope would likely have included skin tone normalization as an explicit test dimension, given the well-documented challenges of computer vision systems with darker skin tones.
 
-**Implication:** Audit scope for systems serving the Deaf community must include Deaf Community Advisory Panel review before the audit begins. Community input at the design stage of quality assurance is not a courtesy — it is the mechanism for catching failure modes that technical teams alone will not anticipate.
+**Implication:** Audit scope for systems serving the Deaf community must include Deaf Community Advisory Panel review before the audit begins. Community input at the design stage of quality assurance is not a courtesy. It is the mechanism for catching failure modes that technical teams alone will not anticipate.
 
 ---
 
@@ -94,7 +94,7 @@ No demographic composition fields were recorded when the training dataset was as
 
 ### CF-5: The Incident Exposed a Broader Representativeness Problem
 
-The external fairness specialist and the Deaf Community Advisory Panel both identified that skin tone is one dimension of a broader training data representativeness gap. Preliminary analysis showed performance gaps — at lower magnitudes — for age-related signing variation and physical limitation variation as well. The skin tone disparity was the largest and most immediately detectable, but it is not the only one.
+The external fairness specialist and the Deaf Community Advisory Panel both identified that skin tone is one dimension of a broader training data representativeness gap. Preliminary analysis showed performance gaps, at lower magnitudes, for age-related signing variation and physical limitation variation as well. The skin tone disparity was the largest and most immediately detectable, but it is not the only one.
 
 **Implication:** The remediation plan must address the full demographic scope of representativeness, not only the dimension that triggered the incident. Fixing skin tone while leaving other gaps unaddressed would be a partial remediation that still fails members of the Deaf community.
 
@@ -104,12 +104,12 @@ The external fairness specialist and the Deaf Community Advisory Panel both iden
 
 | Action | Contributing Factor Addressed | Owner | Due Date | Status |
 |--------|------|-------|---------|--------|
-| Redesign and recalibrate normalization algorithm on demographically balanced evaluation set | Root cause, CF-1, CF-3 | ML Engineering | 30 June 2026 | In progress |
+| Redesign and recalibrate normalization algorithm on demographically balanced evaluation set | Root cause, CF-1, CF-3 | Advanced Sign Technology (AST) | 30 June 2026 | In progress |
 | Commission supplemental training data collection across all underrepresented demographic dimensions | CF-4, CF-5 | Chief Product Officer + AGPO | 31 July 2026 | In progress |
-| Define minimum representation thresholds per demographic dimension as a formal dataset intake requirement | CF-4 | AGPO + ML Engineering | 30 June 2026 | In progress |
+| Define minimum representation thresholds per demographic dimension as a formal dataset intake requirement | CF-4 | AGPO + Advanced Sign Technology (AST) | 30 June 2026 | In progress |
 | Require Deaf Community Advisory Panel review of bias audit scope before any audit begins | CF-2 | AGPO | 30 June 2026 | In progress |
-| Deploy demographic accuracy monitoring (segmented by skin tone proxy, age, dialect variation) before any future POC or production deployment | CF-1 | ML Engineering + Engineering Lead | 30 September 2026 (before POC resumption) | Not started |
-| Retrain SP-AI-001 on expanded, demographically documented dataset | Root cause, CF-4, CF-5 | ML Engineering | 31 August 2026 | Not started |
+| Deploy demographic accuracy monitoring (segmented by skin tone proxy, age, dialect variation) before any future POC or production deployment | CF-1 | Advanced Sign Technology (AST) and Engineering Lead | 30 September 2026 (before POC resumption) | Not started |
+| Retrain SP-AI-001 on expanded, demographically documented dataset | Root cause, CF-4, CF-5 | Advanced Sign Technology (AST) | 31 August 2026 | Not started |
 | Conduct independent fairness audit across all demographic dimensions before POC resumption | Root cause, CF-2, CF-3 | AGPO + external auditor | 15 October 2026 | Not started |
 | Revise gate conditions: replace "bias audit commissioned" with "bias audit completed with Panel-reviewed scope" for all high-risk deployments involving real users | Root cause, CF-2 | AGPO | 30 June 2026 | In progress |
 | Update AI Use Case Review process to require skin tone normalization testing as an explicit requirement for all computer vision systems | CF-3 | AGPO | 31 July 2026 | Not started |
@@ -129,11 +129,11 @@ The external fairness specialist and the Deaf Community Advisory Panel both iden
 
 4. **The Deaf community is demographically diverse, and that diversity must be documented, not assumed.** Skin tone, age, physical variation, dialect, and language background are all dimensions where training data can fail. Each one must be explicitly documented, explicitly tested, and explicitly reported. "We ran a bias audit" is not a governance answer. "Our bias audit tested these specific dimensions against these specific thresholds and produced these specific results" is.
 
-5. **The Advisory Panel worked.** The detection mechanism for this incident was a community member, not an automated system. That is both a validation of the governance structure and an indictment of the monitoring gap. Both things are true. The lesson is to close the monitoring gap — not to rely on community members to catch what the system should catch automatically.
+5. **The Advisory Panel worked.** The detection mechanism for this incident was a community member, not an automated system. That is both a validation of the governance structure and an indictment of the monitoring gap. Both things are true. The lesson is to close the monitoring gap, not to rely on community members to catch what the system should catch automatically.
 
 6. **Proactive governance protects the community better than reactive governance.** The bias audit was designed to prevent this incident. The incident happened because the audit was incomplete when deployment began. Earlier completion, broader scope, and Panel-reviewed design would have caught this before any Deaf user experienced it.
 
 ---
 
-*RCA approved by AI Governance Committee — 19 June 2026*
-*Distribution: AI Governance Committee · Board Risk and Audit Committee · FCC (summary version) · Deaf Community Advisory Panel*
+*RCA approved by AI Governance Committee: 19 June 2026*
+*Distribution: AI Governa

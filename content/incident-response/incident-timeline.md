@@ -1,23 +1,23 @@
-# Incident Response Timeline — SP-INC-2026-001
+# Incident Response Timeline: SP-INC-2026-001
 
 **Incident:** SP-AI-001 Skin Tone Accuracy Disparity
-**Timeline Period:** May 2026 — July 2026
+**Timeline Period:** May 2026 to July 2026
 
 ---
 
 ## Week 1 (4–8 May 2026): Detection and Immediate Response
 
-### Day 1 — Sunday 4 May
+### Day 1: Sunday 4 May
 **Event:** Detection via Deaf Community Advisory Panel
 
-- Advisory Panel member submits written report to the AGPO describing elevated interpretation errors among her network of POC participants
+- Advisory Panel member submits written report to the AGPO describing elevated interpretation errors among her network of POC (proof of concept) participants
 - Report flagged for engineering review on Monday morning
 
 **Status:** Detection initiated
 
 ---
 
-### Day 2 — Monday 5 May
+### Day 2: Monday 5 May
 **Event:** Engineering Triage
 
 - AGPO reviews Advisory Panel report; engineering team tasked with confidence score log analysis
@@ -28,7 +28,7 @@
 
 ---
 
-### Day 3 — Tuesday 6 May
+### Day 3: Tuesday 6 May
 **Event:** Finding Confirmed; Severity 1 Declared
 
 - Engineering completes initial luminance analysis: 17-percentage-point confidence score gap confirmed between lower and upper luminance quartiles
@@ -48,24 +48,24 @@ Chief Risk Officer approves containment measure.
 
 ---
 
-### Day 4 — Wednesday 7 May
+### Day 4: Wednesday 7 May
 **Event:** Containment Implemented; Board Notification
 
-- SignalPath Interpret AI pipeline suspended for all POC calls — full human interpreter routing activated
-- POC participants notified of temporary service change (framed as a planned system review, not an incident — legal review of communications language completed same day)
+- SignalPath Interpret AI pipeline suspended for all POC calls. Full human interpreter routing activated.
+- POC participants notified of temporary service change (framed as a planned system review, not an incident; legal review of communications language completed same day)
 - Board Risk and Audit Committee Chair notified by Chief Risk Officer (within 48-hour requirement) ✓
 - Extraordinary AI Governance Committee session scheduled for 9 May
 - Incident document (SP-INC-2026-001) drafted and circulated internally
 
 **Legal and Compliance begin regulatory disclosure assessment:**
-- FCC Part 64 — does the disparity constitute a functional equivalency breach requiring FCC notification?
-- EU AI Act Article 73 — do any POC participants have EU data subject status (travelers) triggering serious incident reporting?
-- BIPA — are any affected POC participants Illinois residents?
-- GDPR Article 9 — biometric data processing resulting in discriminatory output
+- FCC (Federal Communications Commission) Part 64: does the disparity constitute a functional equivalency breach requiring FCC notification?
+- EU AI Act Article 73: do any POC participants have EU data subject status (travelers) triggering serious incident reporting?
+- BIPA: are any affected POC participants Illinois residents?
+- GDPR (General Data Protection Regulation) Article 9: biometric data processing resulting in discriminatory output
 
 ---
 
-### Day 5–6 — Friday–Saturday 9–10 May
+### Day 5–6: Friday–Saturday 9–10 May
 **Event:** AI Governance Committee Extraordinary Session
 
 **Agenda:**
@@ -76,12 +76,12 @@ Chief Risk Officer approves containment measure.
 5. Deaf Community Advisory Panel engagement plan
 
 **Decisions made:**
-1. Full POC suspension maintained pending investigation — no timeline for resumption until root cause is confirmed and training data remediation plan is approved
+1. Full POC suspension maintained pending investigation. No timeline for resumption until root cause is confirmed and training data remediation plan is approved.
 2. Legal and General Counsel to prepare regulatory disclosure recommendation for Chief Risk Officer approval by 16 May
-3. Engineering to conduct full training dataset audit: skin tone representation, dataset provenance documentation, luminance distribution across training samples — target: 23 May
+3. Engineering to conduct full training dataset audit: skin tone representation, dataset provenance documentation, luminance distribution across training samples; target: 23 May
 4. External AI fairness specialist to be engaged for independent validation of engineering findings (engagement by 12 May)
-5. Deaf Community Advisory Panel to be briefed directly on the incident by AGPO and Chief Product Officer by 14 May — no governance decision about remediation scope until Panel has provided input
-6. Internal communications: all staff in VRS Operations, Product, and ML Engineering to receive briefing by 14 May
+5. Deaf Community Advisory Panel to be briefed directly on the incident by AGPO and Chief Product Officer by 14 May. No governance decision about remediation scope until Panel has provided input.
+6. Internal communications: all staff in Interpreting Services, Product Management, and Advanced Sign Technology (AST) to receive briefing by 14 May
 
 ---
 
@@ -91,7 +91,7 @@ Chief Risk Officer approves containment measure.
 
 - External AI fairness specialist begins independent review of engineering findings
 - Full training dataset audit underway: skin tone distribution, luminance representation across training samples, geographic and demographic tagging review
-- AGPO reviews whether demographic monitoring was operational at POC launch — preliminary finding: demographic segmentation layer was scheduled for post-launch configuration, not operational at launch (control gap documented)
+- AGPO reviews whether demographic monitoring was operational at POC launch. Preliminary finding: demographic segmentation layer was scheduled for post-launch configuration, not operational at launch (control gap documented).
 - Legal drafts regulatory notification letters for FCC and EU AI Act authority pending scope confirmation
 - Chief Privacy Officer reviews GDPR Article 9 exposure: biometric data processing producing discriminatory outputs across the POC period
 
@@ -102,7 +102,7 @@ Chief Risk Officer approves containment measure.
 - AGPO documents Panel input; Committee to consider expanded remediation scope
 
 **Emerging findings (preliminary):**
-- Training dataset skin tone distribution: estimated 74% of training samples with luminance values corresponding to lighter skin tones; 26% darker — significant underrepresentation
+- Training dataset skin tone distribution: estimated 74% of training samples with luminance values corresponding to lighter skin tones; 26% darker: significant underrepresentation
 - Normalization algorithm calibration was never tested against a skin-tone-stratified evaluation set
 - Dataset provenance documentation: no skin tone or demographic composition fields recorded at dataset assembly
 
@@ -114,9 +114,9 @@ Chief Risk Officer approves containment measure.
 
 **Key findings:**
 1. Skin tone proxy correlation confirmed as statistically significant: not an artifact of the luminance measurement approach
-2. The normalization algorithm introduces the primary performance gap before the classification model processes input — this means the classification model's accuracy figures in aggregate testing masked the disparity
+2. The normalization algorithm introduces the primary performance gap before the classification model processes input. This means the classification model's accuracy figures in aggregate testing masked the disparity.
 3. The 17-percentage-point confidence gap translates to a materially worse interpretation experience: longer pauses, higher error rates on low-frequency vocabulary, more frequent LCL breaches
-4. The disparity is present throughout the POC period from first deployment — it was not introduced by a model update
+4. The disparity is present throughout the POC period from first deployment. It was not introduced by a model update.
 5. Panel's expanded scope recommendation is warranted: preliminary analysis of age-related signing variation and physical limitation variation also shows performance gaps, at lower magnitudes
 
 **Scope of affected calls confirmed:**
@@ -138,14 +138,14 @@ Chief Risk Officer approves regulatory notifications:
 Following Deaf Community Advisory Panel input and external specialist findings, the AI Governance Committee approves an expanded remediation scope:
 
 **Immediate (before any further POC or production deployment):**
-- Full demographic representation audit of training dataset across: skin tone, age-related hand morphology, physical limitation variation (including limited finger mobility), regional ASL dialect, oral Deaf signer variation, BASL (Black American Sign Language) phonological features
+- Full demographic representation audit of training dataset across: skin tone, age-related hand morphology, physical limitation variation (including limited finger mobility), regional ASL (American Sign Language) dialect, oral Deaf signer variation, BASL (Black American Sign Language) phonological features
 - Normalization algorithm redesign and recalibration on a demographically balanced evaluation set
 - Minimum representation thresholds defined for each demographic dimension before retraining begins
 
 **Retraining plan:**
 - Supplemental training data collection: engage Deaf community organizations to recruit consenting participants across underrepresented demographic dimensions
 - Retraining conducted on expanded dataset
-- Fairness evaluation per demographic segment before any redeployment — not aggregate accuracy only
+- Fairness evaluation per demographic segment before any redeployment, not aggregate accuracy only.
 
 **Retraining timeline:**
 - Supplemental data collection: 1 June – 31 July 2026
@@ -171,12 +171,12 @@ Following Deaf Community Advisory Panel input and external specialist findings, 
 ## Ongoing: Data Collection and Retraining
 
 - Supplemental training data collection in progress
-- Monitoring framework demographic segmentation layer deployed in staging environment (June 2026) — will be operational before any POC resumption
+- Monitoring framework demographic segmentation layer deployed in staging environment (June 2026). Will be operational before any POC resumption.
 - Quarterly updates to AI Governance Committee throughout remediation period
 
 ---
 
-## Incident Summary — Key Metrics
+## Incident Summary: Key Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -192,4 +192,4 @@ Following Deaf Community Advisory Panel input and external specialist findings, 
 
 ---
 
-*This timeline is based on the SignalPath Interpret expanded POC incident of May 2026. All figures are internal governance estimates; regulatory submissions reflect information available at the time of filing.*
+*This timeline is based on the SignalPath Interpret expanded

@@ -9,6 +9,9 @@ project-01-ai-system-inventory/
 project-02-risk-assessment/
 project-03-responsible-ai-policy/
 
+# Session handoff documents (working notes, not part of the portfolio)
+SESSION-HANDOFF*.md
+
 # Session / OS
 .DS_Store
 Thumbs.db

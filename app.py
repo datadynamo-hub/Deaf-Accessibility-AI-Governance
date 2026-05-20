@@ -327,11 +327,11 @@ DEFAULT_CONTROLS = {
 # 10. DYNAMIC BANNER
 # ─────────────────────────────────────────────
 BANNERS = {
-    "Command Center":   "**Operational Command Center** — Continuous Control Telemetry Active",
-    "Registry":         "**Active Registry Inventory** — System Registry Active",
-    "Risk Intelligence":"**Risk Intelligence** — SP-AI-001 Deep-Dive Risk Analysis",
-    "Incident Response":"**Incident Response Simulator** — SP-AI-001 Skin Tone Disparity Incident Walkthrough",
-    "Gov Hub":          "**Governance Documentation Hub** — Policy and Compliance Library",
+    "Command Center":   "**Operational Command Center**: Continuous Control Telemetry Active",
+    "Registry":         "**Active Registry Inventory**: System Registry Active",
+    "Risk Intelligence":"**Risk Intelligence**: SP-AI-001 Deep-Dive Risk Analysis",
+    "Incident Response":"**Incident Response Simulator**: SP-AI-001 Skin Tone Disparity Incident Walkthrough",
+    "Gov Hub":          "**Governance Documentation Hub**: Policy and Compliance Library",
 }
 st.info(BANNERS[st.session_state.view])
 
@@ -381,7 +381,7 @@ if st.session_state.view == "Command Center":
 
     if system_options:
         cur_idx = system_options.index(st.session_state.selected_system) if st.session_state.selected_system in system_options else 0
-        chosen  = st.selectbox("Active System — Live Control Target:", options=system_options, index=cur_idx, key="cc_sys")
+        chosen  = st.selectbox("Active System: Live Control Target:", options=system_options, index=cur_idx, key="cc_sys")
         if chosen != st.session_state.selected_system:
             st.session_state.selected_system = chosen
             st.rerun()
@@ -492,11 +492,11 @@ elif st.session_state.view == "Registry":
 # ─────────────────────────────────────────────
 elif st.session_state.view == "Risk Intelligence":
 
-    st.markdown("### SP-AI-001 Risk Analysis — SignalPath Interpret")
+    st.markdown("### SP-AI-001 Risk Analysis: SignalPath Interpret")
     st.markdown(
         "The risk assessment below covers SignalPath Interpret (SP-AI-001), "
         "SignalPath's real-time ASL interpretation AI for Video Relay Service calls. "
-        "This is a pre-production governance gate assessment — six risks evaluated before any production deployment. "
+        "This is a pre-production governance gate assessment. Six risks were evaluated before any production deployment. "
         "The heat map shows both inherent risk (before controls) and residual risk (after controls are applied)."
     )
 
@@ -512,7 +512,7 @@ elif st.session_state.view == "Risk Intelligence":
         },
         "RISK-002": {
             "label": "RISK-002",
-            "name": "Emergency Call Failure — No Human Override Architecture",
+            "name": "Emergency Call Failure: No Human Override Architecture",
             "inherent_l": 3, "inherent_i": 5, "inherent_score": 15, "inherent_level": "High",
             "residual_l": 2, "residual_i": 3, "residual_score": 6, "residual_level": "Low",
             "summary": "No human-in-the-loop architecture defined for emergency relay calls. Misinterpretation during a 911 relay with no override path is a life-safety event and a direct FCC Part 64 violation.",
@@ -531,7 +531,7 @@ elif st.session_state.view == "Risk Intelligence":
             "name": "Biometric Data Processing Without Consent Framework",
             "inherent_l": 4, "inherent_i": 4, "inherent_score": 16, "inherent_level": "High",
             "residual_l": 2, "residual_i": 3, "residual_score": 6, "residual_level": "Low",
-            "summary": "System processes hand shape, facial expression, and body position — biometric data under GDPR Article 9. No explicit consent framework or opt-out mechanism exists. Deaf users traveling internationally are covered by GDPR regardless of account origin.",
+            "summary": "System processes hand shape, facial expression, and body position: biometric data under GDPR Article 9. No explicit consent framework or opt-out mechanism exists. Deaf users traveling internationally are covered by GDPR regardless of account origin.",
             "control_owner": "Chief Privacy Officer and Legal",
         },
         "RISK-005": {
@@ -606,7 +606,7 @@ elif st.session_state.view == "Risk Intelligence":
     levels = [r["residual_level"] if show_residual else r["inherent_level"] for r in risk_list]
     names  = [r["name"] for r in risk_list]
     colors = [risk_color(s) for s in scores]
-    hovers = [f"<b>{labels[i]}</b><br>{names[i]}<br>Likelihood: {px[i]} | Impact: {py[i]}<br>Score: {scores[i]} — {levels[i]}" for i in range(len(risk_list))]
+    hovers = [f"<b>{labels[i]}</b><br>{names[i]}<br>Likelihood: {px[i]} | Impact: {py[i]}<br>Score: {scores[i]}: {levels[i]}" for i in range(len(risk_list))]
 
     fig.add_trace(go.Scatter(
         x=px, y=py,
@@ -643,7 +643,7 @@ elif st.session_state.view == "Risk Intelligence":
     selected_risk_key = st.selectbox(
         "Select a risk to review:",
         options=list(RISKS.keys()),
-        format_func=lambda k: f"{k} — {RISKS[k]['name']}"
+        format_func=lambda k: f"{k}: {RISKS[k]['name']}"
     )
     rd = RISKS[selected_risk_key]
     score_show = rd["residual_score"] if show_residual else rd["inherent_score"]
@@ -662,7 +662,7 @@ elif st.session_state.view == "Risk Intelligence":
 
     # Governance memo
     st.write("##")
-    with st.expander("Board Governance Review Memo — SP-AI-001 Deployment Decision"):
+    with st.expander("Board Governance Review Memo: SP-AI-001 Deployment Decision"):
         try:
             with open(os.path.join(RISK_PATH, "governance-review-memo.md"), "r", encoding="utf-8", errors="ignore") as f:
                 st.markdown(f.read())
@@ -674,26 +674,26 @@ elif st.session_state.view == "Risk Intelligence":
 # ─────────────────────────────────────────────
 elif st.session_state.view == "Incident Response":
 
-    st.markdown("### Incident Response Simulator — SP-INC-2026-001")
+    st.markdown("### Incident Response Simulator: SP-INC-2026-001")
 
     with st.container(border=True):
         st.markdown(
             "**What triggered this incident:** In the Operational Command Center, the Live Control Monitor "
             "tracks SP-AI-001's real-time confidence score. Demographic monitoring revealed a systematic "
-            "confidence gap correlated with skin tone — a disparity invisible to aggregate metrics. "
+            "confidence gap correlated with skin tone. This disparity was invisible to aggregate metrics. "
             "This walkthrough shows what a well-governed organization does when that signal fires."
         )
 
     st.write("##")
 
     PHASES = [
-        "Phase 0 — Detection",
-        "Phase 1 — Triage",
-        "Phase 2 — Containment",
-        "Phase 3 — Investigation",
-        "Phase 4 — Remediation Planning",
-        "Phase 5 — Regulatory Reporting",
-        "Phase 6 — Post-Incident Review",
+        "Phase 0: Detection",
+        "Phase 1: Triage",
+        "Phase 2: Containment",
+        "Phase 3: Investigation",
+        "Phase 4: Remediation Planning",
+        "Phase 5: Regulatory Reporting",
+        "Phase 6: Post-Incident Review",
     ]
 
     selected_phase = st.select_slider("Incident Phase", options=PHASES)
@@ -703,21 +703,21 @@ elif st.session_state.view == "Incident Response":
 
     PHASE_CONTENT = [
         {
-            "title": "Phase 0 — Detection",
+            "title": "Phase 0: Detection",
             "timeframe": "Day 1 · 4 May 2026",
             "trigger": "Deaf Community Advisory Panel member report",
             "description": (
                 "A Deaf Community Advisory Panel member submits a written report to the AI Governance Program Office (AGPO). "
-                "She and several members of her network — all SP-AI-001 POC participants — have been experiencing elevated interpretation errors. "
+                "She and several members of her network (all SP-AI-001 POC participants) have been experiencing elevated interpretation errors. "
                 "The errors are not random: they are concentrated in the same group of users. The report reaches the AGPO on a Sunday. "
                 "Engineering is tasked with log analysis for Monday morning."
             ),
             "key_decision": "AGPO prioritizes the report for immediate triage rather than routing it through standard intake. The Advisory Panel's governance role means its reports are treated as first-tier signals, not complaints.",
-            "notifications": "None yet — triage first.",
+            "notifications": "None yet. Triage first.",
             "governance_log": "Advisory Panel report SP-2026-0504-001 received and logged. Engineering triage initiated.",
         },
         {
-            "title": "Phase 1 — Triage",
+            "title": "Phase 1: Triage",
             "timeframe": "Days 2–3 · 5–6 May 2026",
             "trigger": "Engineering confidence score analysis",
             "description": (
@@ -731,12 +731,12 @@ elif st.session_state.view == "Incident Response":
             "governance_log": "Incident SP-INC-2026-001 created. Severity 1 declared. Incident document drafted and circulated internally.",
         },
         {
-            "title": "Phase 2 — Containment",
+            "title": "Phase 2: Containment",
             "timeframe": "Day 4 · 7 May 2026",
             "trigger": "CRO approval of containment recommendation",
             "description": (
                 "The AI interpretation pipeline is suspended for all POC calls. All VRS calls route to human interpreters. "
-                "POC participants receive notification of a temporary service change — framed as a planned system review. "
+                "POC participants receive notification of a temporary service change, framed as a planned system review. "
                 "Legal reviews all external communications language before send. "
                 "Board Risk and Audit Committee Chair is notified by the Chief Risk Officer within the 48-hour requirement. "
                 "An extraordinary AI Governance Committee session is scheduled for 9 May."
@@ -746,7 +746,7 @@ elif st.session_state.view == "Incident Response":
             "governance_log": "SP-AI-001 pipeline suspended. Human interpreter routing activated across all POC calls. External communication sent to POC participants.",
         },
         {
-            "title": "Phase 3 — Investigation",
+            "title": "Phase 3: Investigation",
             "timeframe": "Weeks 1–3 · 9 May – 22 May 2026",
             "trigger": "AI Governance Committee extraordinary session approval of investigation plan",
             "description": (
@@ -762,7 +762,7 @@ elif st.session_state.view == "Incident Response":
             "governance_log": "Training dataset audit underway. External specialist engaged. Panel input documented and accepted by Committee. Expanded remediation scope approved.",
         },
         {
-            "title": "Phase 4 — Remediation Planning",
+            "title": "Phase 4: Remediation Planning",
             "timeframe": "Weeks 4–5 · 25 May – 5 June 2026",
             "trigger": "Full investigation findings confirmed",
             "description": (
@@ -773,12 +773,12 @@ elif st.session_state.view == "Incident Response":
                 "The normalization algorithm will be redesigned and recalibrated on a demographically balanced evaluation set. "
                 "Target for POC resumption: November 2026, contingent on independent fairness audit completion."
             ),
-            "key_decision": "No deployment resumption without completed independent fairness audit across all demographic dimensions. The gate condition is completion, not commissioning — the exact gap the original governance structure failed to enforce.",
+            "key_decision": "No deployment resumption without completed independent fairness audit across all demographic dimensions. The gate condition is completion, not commissioning. This is the exact gap the original governance structure failed to enforce.",
             "notifications": "Remediation plan shared with Advisory Panel. Chief Product Officer accountable for supplemental data collection timeline.",
             "governance_log": "Remediation plan approved by AI Governance Committee. Timelines documented. Monitoring framework demographic segmentation layer scheduled for operational readiness before POC resumption.",
         },
         {
-            "title": "Phase 5 — Regulatory Reporting",
+            "title": "Phase 5: Regulatory Reporting",
             "timeframe": "Weeks 3–5 · 22 May – 5 June 2026",
             "trigger": "Legal and Compliance regulatory disclosure assessment complete",
             "description": (
@@ -795,13 +795,13 @@ elif st.session_state.view == "Incident Response":
             "governance_log": "Regulatory disclosure log created. FCC notification documented. EU AI Act and BIPA assessments recorded with owners and timelines.",
         },
         {
-            "title": "Phase 6 — Post-Incident Review",
+            "title": "Phase 6: Post-Incident Review",
             "timeframe": "Weeks 6–8 · 8–26 June 2026",
             "trigger": "Root cause analysis complete and approved",
             "description": (
                 "The formal root cause analysis is completed using the Five Whys method. "
                 "The root cause is identified: the gate condition for bias audit completion was insufficient. "
-                "Requiring that an audit be commissioned — but not completed — allowed deployment to proceed while the exact failure mode the audit was designed to catch remained undetected. "
+                "Requiring that an audit be commissioned (but not completed) allowed deployment to proceed while the exact failure mode the audit was designed to catch remained undetected. "
                 "Five contributing factors are documented including: demographic monitoring not operational at POC launch, "
                 "audit scope defined without Advisory Panel input, and training data composition undocumented. "
                 "The corrective action plan is approved by the AI Governance Committee. "
@@ -915,20 +915,20 @@ elif st.session_state.view == "Gov Hub":
             st.error(f"Could not load NIST RMF Mapping: {e}")
 
     with tab6:
-        st.markdown("#### EU AI Act Conformity Pack — SP-AI-001 SignalPath Interpret")
+        st.markdown("#### EU AI Act Conformity Pack: SP-AI-001 SignalPath Interpret")
         st.info(
             "The EU AI Act Conformity Pack documents SignalPath Interpret's compliance with EU AI Act "
             "Articles 9–17 for High Risk AI systems. This pack covers intended purpose, risk management, "
             "data governance, human oversight, logging and traceability, and performance monitoring. "
-            "This section is under active development — see SESSION-HANDOFF-PROJECT5.md for the research architecture."
+            "This section is under active development. See SESSION-HANDOFF-PROJECT5.md for the research architecture."
         )
         conformity_docs = [
-            "01 — Intended Purpose and System Description (Article 11, Annex IV)",
-            "02 — Risk Management Summary (Article 9)",
-            "03 — Data Governance (Article 10)",
-            "04 — Human Oversight Mechanisms (Article 14)",
-            "05 — Logging and Traceability (Article 12)",
-            "06 — Performance Monitoring Plan (Articles 15 + 17)",
+            "01: Intended Purpose and System Description (Article 11, Annex IV)",
+            "02: Risk Management Summary (Article 9)",
+            "03: Data Governance (Article 10)",
+            "04: Human Oversight Mechanisms (Article 14)",
+            "05: Logging and Traceability (Article 12)",
+            "06: Performance Monitoring Plan (Articles 15 + 17)",
         ]
         st.selectbox("Document", options=conformity_docs, disabled=True)
         st.caption("Conformity pack documents will appear here when Project 5 is complete.")
