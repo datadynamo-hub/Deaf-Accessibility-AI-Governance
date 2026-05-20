@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# Old project folders (removed from tracking; physical files remain locally)
+project-01-ai-system-inventory/
+project-02-risk-assessment/
+project-03-responsible-ai-policy/
+
+# Session / OS
+.DS_Store
+Thumbs.db
+*.swp
