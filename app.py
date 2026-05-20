@@ -911,7 +911,9 @@ elif st.session_state.view == "Gov Hub":
             if "<!-- GOVERNANCE_DIAGRAM -->" in content:
                 parts = content.split("<!-- GOVERNANCE_DIAGRAM -->")
                 st.markdown(parts[0])
-                st.image("assets/governance-structure.png", use_container_width=True)
+                _, img_col, _ = st.columns([1, 8, 1])
+                with img_col:
+                    st.image("assets/governance-structure.png", use_container_width=True)
                 st.markdown(parts[1])
             else:
                 st.markdown(content)
