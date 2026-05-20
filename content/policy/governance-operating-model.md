@@ -20,8 +20,6 @@ At a company where AI systems interpret emergency relay calls in real time, gove
 
 <!-- GOVERNANCE_DIAGRAM -->
 
-*Abbreviations used above are defined in Section 2.*
-
 ---
 
 ## Committee and Role Descriptions
