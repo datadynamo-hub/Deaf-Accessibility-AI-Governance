@@ -140,7 +140,149 @@ def get_field(profile, field_name):
         return "*Not yet defined*" if field_name == "mitigation_strategy" else "*Under Review*"
     return text
 
-# 8. DYNAMIC BANNER
+
+# 8. SYSTEM CONTROLS — per-system breach, guardrail, SLA, and escalation text
+SYSTEM_CONTROLS = {
+    "SP-AI-001": {
+        "breach_vector": "Spatial tracking degradation in localized extremity nodes (Digit 5 Occlusion Anomaly). Computer vision confidence below structural validation baseline.",
+        "guardrail": "ASL interpretation pipeline isolated. Live call traffic hot-swapped to standby human interpreter stream (0ms latency).",
+        "target_metric": "Computer-vision confidence >= 94%",
+        "response_sla": "0ms (immediate hot-swap)",
+        "escalation_1": "P1 Incident payload routed via API webhook to PagerDuty/MLOps On-Call Engineer (Instant Page)",
+        "escalation_2": "FCC compliance log created -- interpreter service continuity event recorded in GRC Registry",
+    },
+    "SP-AI-002": {
+        "breach_vector": "Real-time transcription accuracy degraded. Word Error Rate exceeds 5% threshold for Deaf user communication.",
+        "guardrail": "Caption generation pipeline suspended. Session flagged for manual review; user notified of service interruption.",
+        "target_metric": "Word Error Rate <= 5%",
+        "response_sla": "1 hour",
+        "escalation_1": "P2 Alert routed to CaptionLine Operations team (1-hour review window)",
+        "escalation_2": "ADA compliance event logged -- captioning accuracy incident recorded in GRC Registry",
+    },
+    "SP-AI-003": {
+        "breach_vector": "Interpreter-to-caller matching failure rate exceeded threshold. ML routing model producing suboptimal assignments below 95% success rate.",
+        "guardrail": "ML routing suspended. Call queue reverted to manual dispatcher assignment protocol.",
+        "target_metric": "Interpreter-caller matching success >= 95%",
+        "response_sla": "2 hours",
+        "escalation_1": "P2 Alert sent to Call Operations Management (2-hour review window)",
+        "escalation_2": "SLA compliance event logged in GRC Registry -- routing degradation incident recorded",
+    },
+    "SP-AI-004": {
+        "breach_vector": "Caption accuracy below FCC Part 64 functional equivalency standard. Home user communication accuracy compromised below 99% threshold.",
+        "guardrail": "Automated captioning suspended. FCC-mandated manual captioning backup activated immediately.",
+        "target_metric": "Caption accuracy >= 99% (FCC Part 64 standard)",
+        "response_sla": "30 minutes",
+        "escalation_1": "P1 FCC compliance alert -- functional equivalency breach notification to Regulatory Affairs (30-min window)",
+        "escalation_2": "FCC Part 64 compliance event logged; regulatory disclosure timeline initiated in GRC Registry",
+    },
+    "SP-AI-005": {
+        "breach_vector": "AI-generated content accuracy degradation detected across M365 workflows. Output reliability below 90% acceptable threshold.",
+        "guardrail": "Copilot AI suggestions suspended for affected accounts. Users redirected to standard M365 manual workflow.",
+        "target_metric": "Output accuracy >= 90% across M365 workloads",
+        "response_sla": "4 hours",
+        "escalation_1": "P3 IT Operations alert -- Copilot service degradation notification sent (4-hour review window)",
+        "escalation_2": "Productivity impact event logged; data governance audit trail preserved in GRC Registry",
+    },
+    "SP-AI-006": {
+        "breach_vector": "HR analytics and staffing prediction accuracy below threshold. Interpreter workforce optimization outputs exceeding +/-10% forecast variance.",
+        "guardrail": "AI-generated staffing recommendations suspended. HR decisions reverted to manual analyst review workflow.",
+        "target_metric": "Forecast accuracy within +/-10% of actual staffing needs",
+        "response_sla": "24 hours",
+        "escalation_1": "P2 HR Operations alert -- Workday AI degradation notification to HR Systems team (24-hour review window)",
+        "escalation_2": "Workforce management incident logged; HR compliance audit trail preserved in GRC Registry",
+    },
+    "SP-AI-007": {
+        "breach_vector": "Scheduling model producing compliance-violating shift assignments. Demand forecasting accuracy degraded; labor law violation risk elevated.",
+        "guardrail": "Automated shift generation suspended. Manual scheduling review required before any shift deployment.",
+        "target_metric": "Zero compliance-violating shift assignments",
+        "response_sla": "12 hours (before next shift boundary)",
+        "escalation_1": "P2 Operations alert -- UKG AI degradation notification to Workforce Management team (12-hour window)",
+        "escalation_2": "Labor compliance event logged -- scheduling audit trail preserved in GRC Registry",
+    },
+    "SP-AI-008": {
+        "breach_vector": "Support ticket misclassification rate exceeds 5% threshold. Deaf/HoH accessibility requests at risk of incorrect routing.",
+        "guardrail": "AI triage suspended. All incoming tickets routed to human support queue for manual classification.",
+        "target_metric": "Ticket classification accuracy >= 95% for Deaf/HoH queues",
+        "response_sla": "1 hour",
+        "escalation_1": "P2 Customer Support alert -- Zendesk AI degradation notification (1-hour review window)",
+        "escalation_2": "Customer experience event logged; accessibility support continuity tracked in GRC Registry",
+    },
+    "SP-AI-009": {
+        "breach_vector": "AI-generated proposal content accuracy below threshold. Compliance claims and technical specifications unreliable; bid integrity at risk.",
+        "guardrail": "Automated RFP generation suspended. All proposals flagged for mandatory human legal and technical review before submission.",
+        "target_metric": "Compliance-claim accuracy >= 95%",
+        "response_sla": "24 hours",
+        "escalation_1": "P2 Sales Operations alert -- RFP content accuracy degradation notification (24-hour review window)",
+        "escalation_2": "Contract risk event logged; proposal audit trail preserved in GRC Registry",
+    },
+    "SP-AI-010": {
+        "breach_vector": "Lead scoring and contact data accuracy degradation. Lead-score correlation with conversion below 0.7 threshold; pipeline prioritization unreliable.",
+        "guardrail": "AI-generated lead scores suspended. Sales team notified to revert to manual prospecting validation.",
+        "target_metric": "Lead-score correlation with conversion > 0.7",
+        "response_sla": "4 hours",
+        "escalation_1": "P3 Sales Operations alert -- ZoomInfo AI data quality degradation notification (4-hour review window)",
+        "escalation_2": "Data accuracy event logged; CCPA/GDPR compliance audit trail preserved in GRC Registry",
+    },
+    "SP-AI-011": {
+        "breach_vector": "Sales call analysis accuracy degradation detected. Coaching recommendation accuracy below 85% threshold; pipeline insights unreliable.",
+        "guardrail": "AI-generated coaching flags suspended. Active pipeline analysis paused pending manual review.",
+        "target_metric": "Coaching recommendation accuracy >= 85%",
+        "response_sla": "2 hours",
+        "escalation_1": "P3 Sales Leadership alert -- Gong AI degradation notification (2-hour review window)",
+        "escalation_2": "Data handling event logged; call recording compliance audit preserved in GRC Registry",
+    },
+    "SP-AI-012": {
+        "breach_vector": "Code suggestion quality degradation detected. CVSS vulnerability score exceeds 3.9 (Low severity) threshold; security risk elevated in AI-generated code.",
+        "guardrail": "GitHub Copilot suggestions disabled across all active repositories. Engineering team notified to conduct manual security review of recent AI-generated code.",
+        "target_metric": "CVSS vulnerability score <= 3.9 (Low severity)",
+        "response_sla": "4 hours",
+        "escalation_1": "P2 Engineering Security alert -- Copilot code quality degradation; manual commit review initiated (4-hour window)",
+        "escalation_2": "Code security event logged; engineering compliance audit trail preserved in GRC Registry",
+    },
+    "SP-AI-013": {
+        "breach_vector": "Legal research accuracy and contract analysis confidence below 98% threshold. Regulatory filing review outputs unreliable; legal exposure risk elevated.",
+        "guardrail": "Harvey AI outputs suspended. All active legal matters escalated to manual outside counsel review immediately.",
+        "target_metric": "Legal-research accuracy >= 98%",
+        "response_sla": "4 hours",
+        "escalation_1": "P1 Legal Operations alert -- Harvey AI accuracy degradation; outside counsel notified immediately (4-hour window)",
+        "escalation_2": "Legal risk event logged; attorney-client privilege and compliance audit trail preserved in GRC Registry",
+    },
+    "SP-AI-014": {
+        "breach_vector": "Regulatory change detection accuracy degradation below 99% threshold. FCC filings and rule changes at risk of missed alerting.",
+        "guardrail": "Automated regulatory monitoring suspended. Manual FCC docket review assigned to Regulatory Affairs team immediately.",
+        "target_metric": "Regulatory-change detection accuracy >= 99%",
+        "response_sla": "1 hour",
+        "escalation_1": "P1 Regulatory Affairs alert -- FCC monitoring degradation; manual docket review protocol activated (1-hour window)",
+        "escalation_2": "Regulatory compliance event logged; FCC monitoring gap documented in GRC Registry",
+    },
+    "SP-AI-015": {
+        "breach_vector": "Threat detection accuracy below acceptable threshold. False-negative rate exceeds 1%; security anomalies at risk of suppression or misclassification.",
+        "guardrail": "AI threat scoring suspended. Security Operations Center (SOC) placed on 24/7 manual monitoring protocol immediately.",
+        "target_metric": "False-negative rate <= 1%",
+        "response_sla": "1 hour",
+        "escalation_1": "P1 SOC alert -- Sentinel AI degradation; 24/7 manual monitoring activated immediately (1-hour window)",
+        "escalation_2": "Security incident event logged; SOC compliance and incident response audit trail preserved in GRC Registry",
+    },
+    "SP-AI-016": {
+        "breach_vector": "Unauthorized AI tool processing detected on corporate or Deaf community personal data. Data exfiltration risk score elevated; PII breach protocol triggered.",
+        "guardrail": "Network traffic to unauthorized AI endpoints blocked immediately. Affected user sessions flagged for HR and Legal review. Review initiated within 1 hour.",
+        "target_metric": "Unauthorized AI endpoint detection rate >= 95%",
+        "response_sla": "1 hour (traffic blocked; joint HR/Legal review initiated)",
+        "escalation_1": "P1 Security and Legal alert -- Shadow AI data exposure event; immediate investigation protocol activated (1-hour window)",
+        "escalation_2": "Data privacy incident logged; GDPR/CCPA breach assessment timeline initiated in GRC Registry",
+    },
+}
+
+DEFAULT_CONTROLS = {
+    "breach_vector": "Performance degradation detected. Model outputs below acceptable threshold.",
+    "guardrail": "System pipeline isolated. Traffic rerouted to manual review workflow.",
+    "target_metric": "System-specific performance threshold",
+    "response_sla": "4 hours",
+    "escalation_1": "P2 Incident payload routed to On-Call Engineer",
+    "escalation_2": "Compliance tracking payload pushed to GRC Registry",
+}
+
+# 9. DYNAMIC BANNER
 BANNERS = {
     "Command Center": "**Operational Command Center** - Continuous Control Telemetry Active",
     "Registry":       "**Active Registry Inventory** - System Registry Tab Active",
@@ -199,9 +341,11 @@ if st.session_state.view == "Command Center":
             st.rerun()
 
     ap      = get_system_profile(st.session_state.selected_system)
+    ap      = get_system_profile(st.session_state.selected_system)
     s_name  = get_field(ap, "system_name")
     s_id    = get_field(ap, "system_id")
     s_purp  = get_field(ap, "primary_purpose")
+    ctrl    = SYSTEM_CONTROLS.get(s_id, DEFAULT_CONTROLS)
 
     with st.container(border=True):
         st.markdown(f"### Live Control Monitor: {s_name} ({s_id})")
@@ -211,24 +355,28 @@ if st.session_state.view == "Command Center":
         with c1:
             score = st.slider("Simulated Ingestion Model Confidence Score (%)", 0, 100, 85, 1,
                               help="75% is the engineered Lower Control Limit (LCL). Drop below to trigger the safety interlock.")
+            st.caption(f"Target: {ctrl['target_metric']}  |  Response SLA: {ctrl['response_sla']}")
         with c2:
             if score < 75:
                 st.error(
                     f"CRITICAL EXCEPTION: Model Confidence at {score}% (LCL <75%)\n\n"
-                    "Breach Vector: Spatial tracking degradation in localized extremity nodes "
-                    "(Digit 5 Occlusion Anomaly). Signal path variance exceeds structural validation baseline.\n\n"
-                    "Automated Guardrail (0ms): Pipeline isolated. Traffic hot-swapped to human-in-the-loop interpreter stream."
+                    f"Breach Vector: {ctrl['breach_vector']}\n\n"
+                    f"Automated Guardrail (0ms): {ctrl['guardrail']}\n\n"
+                    f"Response SLA: {ctrl['response_sla']}"
                 )
                 st.warning(
-                    "Incident Escalation Logs:\n"
-                    "* Technical Alert: P1 payload routed via API webhook to PagerDuty/MLOps On-Call (Instant Page)\n"
-                    "* Audit Log: Compliance payload pushed to GRC Registry"
+                    f"Incident Escalation Logs:\n"
+                    f"* Technical Alert: {ctrl['escalation_1']}\n"
+                    f"* Audit Log: {ctrl['escalation_2']}"
                 )
             else:
                 st.success(
                     f"Continuous Control Operating Effectively ({score}%)\n\n"
-                    "Model tracking parameters within baseline statistical variances. No human-in-the-loop interlocks required."
+                    "Model tracking parameters within baseline statistical variances. "
+                    "No human-in-the-loop interlocks required.\n\n"
+                    f"Target: {ctrl['target_metric']}"
                 )
+
 
 # 10. REGISTRY VIEW
 elif st.session_state.view == "Registry":
