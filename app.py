@@ -655,7 +655,7 @@ elif st.session_state.view == "Risk Intelligence":
         hc1, hc2, hc3 = st.columns(3)
         with hc1: st.metric("Risk Score", score_show)
         with hc2: st.metric("Risk Level", level_show)
-        with hc3: st.metric("Control Owner", rd["control_owner"][:35] + "...")
+        with hc3: st.metric("Control Owner", rd["control_owner"] if len(rd["control_owner"]) <= 35 else rd["control_owner"][:33] + "...")
         st.markdown(f"**{rd['name']}**")
         st.markdown(rd["summary"])
         st.markdown("</div>", unsafe_allow_html=True)
