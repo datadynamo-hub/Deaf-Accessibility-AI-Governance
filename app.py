@@ -746,38 +746,52 @@ elif st.session_state.view == "Incident Response":
     st.markdown(
         """
         <style>
-        div[data-testid="stHorizontalBlock"]:has(button.phase-nav) {
-            justify-content: center;
-        }
-        button.phase-nav {
-            background: none !important;
+        /* Phase nav buttons: filled blue circles with white arrows */
+        [data-testid="stButton"] button[kind="secondary"].phase-nav-btn,
+        div.phase-nav-col > div > div > div > button {
+            background-color: #2563eb !important;
+            color: white !important;
             border: none !important;
-            font-size: 1.5rem !important;
-            color: #1a56db !important;
-            cursor: pointer;
-            padding: 0 8px !important;
-            line-height: 1 !important;
+            border-radius: 50% !important;
+            width: 48px !important;
+            height: 48px !important;
+            min-width: 48px !important;
+            padding: 0 !important;
+            font-size: 1.4rem !important;
+            line-height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: background-color 0.15s ease !important;
         }
-        button.phase-nav:disabled {
-            color: #d1d5db !important;
-            cursor: default;
+        div.phase-nav-col > div > div > div > button:hover {
+            background-color: #1d4ed8 !important;
+        }
+        div.phase-nav-col > div > div > div > button:disabled {
+            background-color: #d1d5db !important;
+            cursor: default !important;
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    _gap_l, _btn_l, _spacer, _btn_r, _gap_r = st.columns([3, 0.5, 8, 0.5, 3])
-    with _btn_l:
-        if st.button("◀", disabled=(phase_idx == 0), key="phase_prev",
-                     help="Previous phase"):
-            st.session_state.phase_idx = phase_idx - 1
-            st.rerun()
-    with _btn_r:
-        if st.button("▶", disabled=(phase_idx == len(PHASES) - 1), key="phase_next",
-                     help="Next phase"):
-            st.session_state.phase_idx = phase_idx + 1
-            st.rerun()
+    _left_gap, _center, _right_gap = st.columns([4, 2, 4])
+    with _center:
+        st.markdown('<div class="phase-nav-col">', unsafe_allow_html=True)
+        _col_prev, _col_next = st.columns([1, 1])
+        with _col_prev:
+            if st.button("←", disabled=(phase_idx == 0), key="phase_prev"):
+                st.session_state.phase_idx = phase_idx - 1
+                st.session_state["phase_slider"] = PHASES[st.session_state.phase_idx]
+                st.rerun()
+        with _col_next:
+            if st.button("→", disabled=(phase_idx == len(PHASES) - 1), key="phase_next"):
+                st.session_state.phase_idx = phase_idx + 1
+                st.session_state["phase_slider"] = PHASES[st.session_state.phase_idx]
+                st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     st.write("##")
 
