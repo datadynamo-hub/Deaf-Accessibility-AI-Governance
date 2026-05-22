@@ -605,14 +605,31 @@ elif st.session_state.view == "Risk Intelligence":
 
     # Risk points
     risk_list = list(RISKS.values())
-    px = [r["residual_l"] if show_residual else r["inherent_l"] for r in risk_list]
-    py = [r["residual_i"] if show_residual else r["inherent_i"] for r in risk_list]
+    px_raw = [r["residual_l"] if show_residual else r["inherent_l"] for r in risk_list]
+    py_raw = [r["residual_i"] if show_residual else r["inherent_i"] for r in risk_list]
     labels = [r["label"] for r in risk_list]
     scores = [r["residual_score"] if show_residual else r["inherent_score"] for r in risk_list]
     levels = [r["residual_level"] if show_residual else r["inherent_level"] for r in risk_list]
     names  = [r["name"] for r in risk_list]
     colors = [risk_color(s) for s in scores]
-    hovers = [f"<b>{labels[i]}</b><br>{names[i]}<br>Likelihood: {px[i]} | Impact: {py[i]}<br>Score: {scores[i]}: {levels[i]}" for i in range(len(risk_list))]
+
+    # Jitter overlapping points so no risk is hidden behind another
+    jitter_offsets = [(-0.18, 0.18), (0.18, 0.18), (-0.18, -0.18), (0.18, -0.18)]
+    coord_count = {}
+    px, py = [], []
+    for x, y in zip(px_raw, py_raw):
+        key = (x, y)
+        n = coord_count.get(key, 0)
+        if n == 0:
+            px.append(x)
+            py.append(y)
+        else:
+            dx, dy = jitter_offsets[(n - 1) % len(jitter_offsets)]
+            px.append(x + dx)
+            py.append(y + dy)
+        coord_count[key] = n + 1
+
+    hovers = [f"<b>{labels[i]}</b><br>{names[i]}<br>Likelihood: {px_raw[i]} | Impact: {py_raw[i]}<br>Score: {scores[i]}: {levels[i]}" for i in range(len(risk_list))]
 
     fig.add_trace(go.Scatter(
         x=px, y=py,
