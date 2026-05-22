@@ -733,65 +733,29 @@ elif st.session_state.view == "Incident Response":
         "Phase 6: Post-Incident Review",
     ]
 
+    def _phase_prev():
+        st.session_state.phase_idx = max(0, st.session_state.phase_idx - 1)
+
+    def _phase_next():
+        st.session_state.phase_idx = min(len(PHASES) - 1, st.session_state.phase_idx + 1)
+
     selected_phase = st.select_slider(
         "Incident Phase",
         options=PHASES,
         value=PHASES[st.session_state.phase_idx],
-        key="phase_slider",
     )
     st.session_state.phase_idx = PHASES.index(selected_phase)
     phase_idx = st.session_state.phase_idx
 
-    # Arrow navigation buttons — centered beneath the slider
-    st.markdown(
-        """
-        <style>
-        /* Phase nav buttons: filled blue circles with white arrows */
-        [data-testid="stButton"] button[kind="secondary"].phase-nav-btn,
-        div.phase-nav-col > div > div > div > button {
-            background-color: #2563eb !important;
-            color: white !important;
-            border: none !important;
-            border-radius: 50% !important;
-            width: 48px !important;
-            height: 48px !important;
-            min-width: 48px !important;
-            padding: 0 !important;
-            font-size: 1.4rem !important;
-            line-height: 48px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            cursor: pointer !important;
-            transition: background-color 0.15s ease !important;
-        }
-        div.phase-nav-col > div > div > div > button:hover {
-            background-color: #1d4ed8 !important;
-        }
-        div.phase-nav-col > div > div > div > button:disabled {
-            background-color: #d1d5db !important;
-            cursor: default !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
     _left_gap, _center, _right_gap = st.columns([4, 2, 4])
     with _center:
-        st.markdown('<div class="phase-nav-col">', unsafe_allow_html=True)
         _col_prev, _col_next = st.columns([1, 1])
         with _col_prev:
-            if st.button("←", disabled=(phase_idx == 0), key="phase_prev"):
-                st.session_state.phase_idx = phase_idx - 1
-                st.session_state["phase_slider"] = PHASES[st.session_state.phase_idx]
-                st.rerun()
+            st.button("←", on_click=_phase_prev, disabled=(phase_idx == 0),
+                      key="phase_prev", type="primary", use_container_width=True)
         with _col_next:
-            if st.button("→", disabled=(phase_idx == len(PHASES) - 1), key="phase_next"):
-                st.session_state.phase_idx = phase_idx + 1
-                st.session_state["phase_slider"] = PHASES[st.session_state.phase_idx]
-                st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.button("→", on_click=_phase_next, disabled=(phase_idx == len(PHASES) - 1),
+                      key="phase_next", type="primary", use_container_width=True)
 
     st.write("##")
 
