@@ -16,6 +16,8 @@ if "view" not in st.session_state:
     st.session_state.view = "Command Center"
 if "selected_system" not in st.session_state:
     st.session_state.selected_system = None
+if "phase_idx" not in st.session_state:
+    st.session_state.phase_idx = 0
 
 # ─────────────────────────────────────────────
 # 2. HEADER
@@ -731,8 +733,51 @@ elif st.session_state.view == "Incident Response":
         "Phase 6: Post-Incident Review",
     ]
 
-    selected_phase = st.select_slider("Incident Phase", options=PHASES)
-    phase_idx = PHASES.index(selected_phase)
+    selected_phase = st.select_slider(
+        "Incident Phase",
+        options=PHASES,
+        value=PHASES[st.session_state.phase_idx],
+        key="phase_slider",
+    )
+    st.session_state.phase_idx = PHASES.index(selected_phase)
+    phase_idx = st.session_state.phase_idx
+
+    # Arrow navigation buttons — centered beneath the slider
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stHorizontalBlock"]:has(button.phase-nav) {
+            justify-content: center;
+        }
+        button.phase-nav {
+            background: none !important;
+            border: none !important;
+            font-size: 1.5rem !important;
+            color: #1a56db !important;
+            cursor: pointer;
+            padding: 0 8px !important;
+            line-height: 1 !important;
+        }
+        button.phase-nav:disabled {
+            color: #d1d5db !important;
+            cursor: default;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    _gap_l, _btn_l, _spacer, _btn_r, _gap_r = st.columns([3, 0.5, 8, 0.5, 3])
+    with _btn_l:
+        if st.button("◀", disabled=(phase_idx == 0), key="phase_prev",
+                     help="Previous phase"):
+            st.session_state.phase_idx = phase_idx - 1
+            st.rerun()
+    with _btn_r:
+        if st.button("▶", disabled=(phase_idx == len(PHASES) - 1), key="phase_next",
+                     help="Next phase"):
+            st.session_state.phase_idx = phase_idx + 1
+            st.rerun()
 
     st.write("##")
 
