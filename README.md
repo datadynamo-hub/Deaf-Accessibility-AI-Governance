@@ -4,19 +4,23 @@
 
 > *"Reading the EU AI Act is not a project. These are."*
 
----
-
-Built on top of Taimur Ijlal's open-source AI governance scaffolding ([taimurijlal/AIGovernance](https://github.com/taimurijlal/AIGovernance)). His wireframe, remapped entirely to a Video Relay Service context where AI governs real-time interpretation for Deaf people on phone calls, medical appointments, and emergency situations.
+[![View Live Dashboard](https://img.shields.io/badge/View%20Live%20Dashboard-%23FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://deaf-accessibility-ai-governance.streamlit.app/)
 
 ---
 
-### 📺 Watch the Project Introduction (8 mins)
+## From Scaffold to Production
 
-*Introduces the project goals and the remapping from Taimur's original scaffolding to the SignalPath context.*
+This repo is a fork of [Taimur Ijlal's](https://github.com/taimurijlal) open-source AI governance scaffolding ([taimurijlal/AIGovernance](https://github.com/taimurijlal/AIGovernance)). His wireframe was the starting point. This is the build.
 
-<p align="center">
-<img width="616" height="341" alt="Screenshot 2026-05-18 230148" src="https://github.com/user-attachments/assets/d5cbb04b-4a8d-44f9-b91d-e076ea827bd4" />
-</p>
+The following were stripped out by design:
+
+- **Five separate project folders** — replaced with a single unified Streamlit app; the portfolio value is in the integrated case study, not in five disconnected exercises.
+- **Generic AI governance scenario** — replaced entirely with SignalPath Technologies, a fictional Deaf accessibility company operating in the Video Relay Service industry, because governance without a real domain problem is just framework tourism.
+- **Placeholder AI system inventory** — replaced with 16 systems across five categories, each EU AI Act risk-classified and mapped to the NIST AI Risk Management Framework, built on the actual system landscape of a VRS provider.
+- **No community representation in governance decisions** — replaced with the Deaf Community Advisory Panel as a named governance participant with documented influence on design decisions, because the people most affected by a system's failures should not be an afterthought.
+- **No incident scenario** — replaced with SP-INC-2026-001, a skin tone accuracy disparity discovered during the SP-AI-001 proof of concept, because a governance framework with no incident is a framework that has never been tested.
+
+Forking and rebuilding a scaffold is a deliberate product judgment call. Every removal was a decision about what actually serves the purpose.
 
 ---
 
