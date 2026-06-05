@@ -6,6 +6,8 @@
 
 [![View Live Dashboard](https://img.shields.io/badge/View%20Live%20Dashboard-%23FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://deaf-accessibility-ai-governance.streamlit.app/)
 
+![Live Control Monitor — automated guardrails triggering on confidence score drop](assets/dashboard_demo.gif)
+
 ---
 
 ## From Scaffold to Production

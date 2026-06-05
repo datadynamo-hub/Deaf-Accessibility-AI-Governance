@@ -49,6 +49,10 @@ st.markdown(
 # 3. SANDBOX BANNER
 # ─────────────────────────────────────────────
 st.info("Governance Sandbox: All telemetry and control data displayed is simulated in real-time to demonstrate system capabilities and automated guardrails.")
+
+with st.expander("Click here for a video walkthrough of this project architecture"):
+    st.video("assets/Video Project 1_2.mp4")
+
 st.markdown("---")
 
 # ─────────────────────────────────────────────
@@ -341,9 +345,6 @@ st.info(BANNERS[st.session_state.view])
 # 11. COMMAND CENTER VIEW
 # ─────────────────────────────────────────────
 if st.session_state.view == "Command Center":
-
-    with st.expander("Click here for a video walkthrough of this project architecture"):
-        st.write("Video walkthrough coming soon.")
 
     st.write("##")
 
