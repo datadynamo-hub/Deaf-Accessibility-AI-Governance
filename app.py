@@ -984,19 +984,23 @@ elif st.session_state.view == "Gov Hub":
 
     with tab6:
         st.markdown("#### EU AI Act Conformity Pack: SP-AI-001 SignalPath Interpret")
-        st.info(
-            "The EU AI Act Conformity Pack documents SignalPath Interpret's compliance with EU AI Act "
-            "Articles 9–17 for High Risk AI systems. This pack covers intended purpose, risk management, "
-            "data governance, human oversight, logging and traceability, and performance monitoring. "
-            "This section is under active development. See SESSION-HANDOFF-PROJECT5.md for the research architecture."
+        st.markdown(
+            "Structured compliance evidence for SP-AI-001 SignalPath Interpret under EU AI Act Articles 9–17. "
+            "Each document covers a distinct high-risk AI obligation. Select a document to view."
         )
-        conformity_docs = [
-            "01: Intended Purpose and System Description (Article 11, Annex IV)",
-            "02: Risk Management Summary (Article 9)",
-            "03: Data Governance (Article 10)",
-            "04: Human Oversight Mechanisms (Article 14)",
-            "05: Logging and Traceability (Article 12)",
-            "06: Performance Monitoring Plan (Articles 15 + 17)",
-        ]
-        st.selectbox("Document", options=conformity_docs, disabled=True)
-        st.caption("Conformity pack documents will appear here when Project 5 is complete.")
+        conformity_docs = {
+            "01: Intended Purpose and System Description (Article 11, Annex IV)": "01-intended-purpose-system-description.md",
+            "02: Risk Management Summary (Article 9)": "02-risk-management-summary.md",
+            "03: Data Governance (Article 10)": "03-data-governance.md",
+            "04: Human Oversight Mechanisms (Article 14)": "04-human-oversight-mechanisms.md",
+            "05: Logging and Traceability (Article 12)": "05-logging-and-traceability.md",
+            "06: Performance Monitoring Plan (Articles 15 + 17)": "06-performance-monitoring-plan.md",
+        }
+        selected_doc = st.selectbox("Document", options=list(conformity_docs.keys()))
+        st.markdown("---")
+        doc_file = conformity_docs[selected_doc]
+        try:
+            with open(os.path.join(CONFORMITY_PATH, doc_file), "r", encoding="utf-8", errors="ignore") as f:
+                st.markdown(f.read())
+        except Exception as e:
+            st.error(f"Could not load {doc_file}: {e}")
